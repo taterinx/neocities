@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<!-- HOLD IT RIGHT THERE -->
+<!-- I see you snooping... Meh. No worries. You're free to look through all this for reference-sake; I myself learn from example so you're good. Have fun :) -->
+<!-- That said, please don't... Like, ACTUALLY copy anything. Not cool. -->
+
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Silkscreen&family=VT323&display=swap');
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✩ Biggus Boggus ✩</title>
+  <link href="oldstyle.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+  <div class="window" id="main-window">
+    <header class="titlebar">
+      <div class="titlebar-title"><a href="https://taterinx.neocities.org/" title="Return?">ᓚᘏᗢ ✩ Inx Browser</a></div>
+      <div class="titlebar-controls">a
+        <div class="controls" id="help" onclick="myFunction()" title="Need help?">
+          <img src="https://i.imgur.com/7ch70hx.png">
+          <span class="popup" id="help-popup">
+            <div class="window">
+              <div class="titlebar">
+                <div class="titlebar-title">Sorry for any trouble!</div>
+              </div>
+              <p>Click on this popup to return to the site!</p>
+              <ul>
+                <li>Lost? Every page and its purpose can be found on my <a target="myFrame"
+                    href="/archive/pages/sitemap">Sitemap</a>.</li>
+                <li>If a link isn't working, that page is likely to be under renovation.</li>
+                <li>Pls contact me via <a href="mailto: taterinx@gmail.com">email</a> for any other accessibility
+                  concerns!</li>
+              </ul>
+            </div>
+          </span>
+        </div>
+        <div class="controls" id="close">
+          <a href="" title="(not yet!)"><img src="https://i.imgur.com/FG9tQbm.png" id="close"></a>
+        </div>
+      </div>
+    </header>
+    <nav id="top-nav">
+      <a target="myFrame" href="/archive/pages/home" title="to the welcome page"><u>H</u>ome</a>
+      <a target="myFrame" href="/archive/pages/about"
+        title="this site and its webmaster"><u>A</u>bout</a>
+      <a target="myFrame" href="/archive/pages/credits" title="where it's due"><u>C</u>redits</a>
+      <a target="myFrame" href="/archive/pages/home" title="feeling lost?"><u>S</u>itemap</a>
+      <marquee behaviour="scroll" direction="left" scrollamount=3>
+        <img src="https://i.imgur.com/b2eK5UG.gif">
+        You are Visitor #
+        <span id="hitcount"></span>
+      </marquee>
+    </nav>
+    <main>
+      <aside id="left-sidebar">
+        <div id="pfp">
+          <img src="https://i.imgur.com/fcNhCa9.gif">
+          <div id="pfp-msg">
+            <img src="https://i.imgur.com/ghYx5WV.jpg">
+          </div>
+        </div>
+        <div id="musicplayer">
+          <div class="controls">
+            <div class="songtitle"></div>
+            <div class="playpause-track" onclick="playpauseTrack()">play</div>
+          </div>
+          <div class="seeking">
+            <div class="current-time">00:00</div>
+            <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+            <div class="total-duration">0:00</div>
+          </div>
+          <audio id="music" src=""></audio>
+        </div>
+        <hr>
+        <div id="links">
+          <section id="links-first">
+            <h2>Crafts</h2>
+            <ul>
+              <li><a target="myFrame" href="/archive/pages/gallery">Gallery</a></li>
+              <li><a target="myFrame" href="/archive/pages/arcade">Arcade</a></li>
+            </ul>
+          </section>
+          <section id="links-second">
+            <h2>Personal</h2>
+            <ul>
+              <li><a target="myFrame" href="/archive/pages/shrines">Shrines</a></li>
+              <li><a target="myFrame" href="/archive/pages/journal">Journal</a></li>
+            </ul>
+          </section>
+          <section id="links-third">
+            <h2>Sitely</h2>
+            <ul>
+              <li><a target="myFrame" href="/archive/pages/bookmarks">Bookmarks</a></li>
+              <li><a target="myFrame" href="/archive/pages/manifesto">Manifesto</a></li>
+            </ul>
+          </section>
+        </div>
+        <hr>
+        <div id="interact">
+          <button><a target="myFrame" href="https://taterinx.123guestbook.com">Guestbook</a></button>
+          <button><a href="index.html"><s>Ko-Fi</s></a></button>
+          <button><a href="index.html"><s>Commissions</s></a></button>
+        </div>
+      </aside>
+      <article>
+        <iframe name="myFrame" sandbox="allow-scripts allow-popups allow-forms"
+          src="/archive/pages/home" name="name"></iframe>
+      </article>
+      <aside id="right-sidebar">
+        <h2>
+          <a target="myFrame" href="https://status.cafe/users/taterinx">Status</a><a
+            href="https://www.imood.com/users/taterinx"><img
+              src="https://moods.imood.com/display/uname-taterinx/imood.gif"></a>
+        </h2>
+        <section class="info" id="status">
+          <div class="status-content">
+            <div id="statuscafe">
+              <div id="statuscafe-username"></div>
+              <div id="statuscafe-content"></div>
+            </div>
+            <script src="https://status.cafe/current-status.js?name=taterinx" defer></script>
+          </div>
+        </section>
+        <h2>Latest Works</h2>
+        <section class="info" id="latest">
+          <div class="label">
+            <em>Recent art, writing, etc. here.</em>
+          </div>
+          <div class="label">
+            <em>Archive</em>
+          </div>
+        </section>
+        <h2><a target="myFrame"
+                  href="/archive/pages/changelog">Changelog</a></h2>
+        <section class="info" id="changelog">
+          <ul>
+            <li>1.3 beta release; read all the changes <i><a target="myFrame"
+                  href="/archive/pages/changelog">here</a></li>
+            <li>27.05.23 revamped <a target="myFrame" href="/archive/pages/journal">Journal</a>
+              page + Spacehey RSS</li>
+            <li>08.05.23 song player courtesy of <a href="https://pastebin.com/PiDgrv3J">Adilene</a></li>
+            <li>07.05.23 new minimalist landing page</li>
+            <li>04.05.23 joining webrings and introducing <a target="myFrame"
+                href="/archive/pages/tools">Tools</a></li>
+            <li>03.05.23 revamped index page, ft. Bartholo-mew!</li>
+            <li>02.05.23 implemented an RSS-based <a target="myFrame"
+                href="/archive/pages/journal">journal</a></li>
+            <li>01.05.23 revamped <a target="myFrame" href="/archive/pages/about">About</a> page
+              into a fun tab system</li>
+            <li>1.2 beta release; read all the changes <i><a target="myFrame"
+                  href="/archive/pages/changelog">here</a></i> (deja vu)</li>
+            <li>1.1 beta release; read all the changes <i><a target="myFrame"
+                  href="/archive/pages/changelog">here</a></i></li>
+            <li>11.04.23 rudimentary <a href="https://taterinx.neocities.org">/index</a> launches</li>
+            <li>07.04.23 temporary blank landing page</li>
+          </ul>
+        </section>
+        <h2>Link Me</h2>
+        <section class="info" id="button">
+          <img src="https://files.catbox.moe/i2uebz.png">
+          <textarea id="copy">
+            <a href="https://taterinx.neocities.org" target="_blank"><img src=""></a>
+          </textarea>
+          <br><em>Please don't hotlink :)</em>
+        </section>
+      </aside>
+    </main>
+    <footer>
+      <iframe src="https://free.timeanddate.com/clock/i8tyt3d2/n1334/tluk/fn8/fs10/fc222/tct/pct/bac919b9c/th1"
+        frameborder="0" allowtransparency="true"></iframe>
+      © 2023 Taterinx - hosted on Neocities - last updated: <span id="lastupdate"></span> - ver 1.3 beta
+    </footer>
+  </div>
+  <div id="sonic">
+    <p>Sonic says only uncool and swagless people steal code :(</p> <img
+      src="https://taterinx.neocities.org/images/extras/sonic_dance.gif">
+
+  </div>
+  <script>
+    // When the user clicks on <div>, open the popup
+    function myFunction() {
+      var popup = document.getElementById("help-popup");
+      popup.classList.toggle("show");
+    }
+  </script>
+  <!-- Music Player -->
+  <script>
+    // initiate variables
+    let track_name = document.querySelector(".songtitle");
+
+    let playpause_btn = document.querySelector(".playpause-track");
+    let next_btn = document.querySelector(".next-track");
+    let prev_btn = document.querySelector(".prev-track");
+
+    let seek_slider = document.querySelector(".seek_slider");
+    let curr_time = document.querySelector(".current-time");
+    let total_duration = document.querySelector(".total-duration");
+
+    let track_index = 0;
+    let isPlaying = false;
+    let updateTimer;
+
+    // create new audio element
+    let curr_track = document.getElementById("music");
+
+    let track_list = [
+      {
+        name: "DᐳEᐳAᐳTᐳHᐳMᐳEᐳTᐳAᐳL",
+        path: "https://files.catbox.moe/prpgsq.mp3"
+      },
+    ];
+
+    function loadTrack(track_index) {
+      clearInterval(updateTimer);
+      resetValues();
+
+      // load a new track
+      curr_track.src = track_list[track_index].path;
+      curr_track.load();
+
+      // update details of the track
+      track_name.textContent = track_list[track_index].name;
+
+      // set an interval of 1000 milliseconds for updating the seek slider
+      updateTimer = setInterval(seekUpdate, 1000);
+
+      // move to the next track if the current one finishes playing 
+      curr_track.addEventListener("ended", nextTrack);
+    }
+
+    // reset values
+    function resetValues() {
+      curr_time.textContent = "0:00";
+      total_duration.textContent = "0:00";
+      seek_slider.value = 0;
+    }
+
+    // checks if song is playing
+    function playpauseTrack() {
+      if (!isPlaying) playTrack();
+      else pauseTrack();
+    }
+
+    // plays track when play button is pressed
+    function playTrack() {
+      curr_track.play();
+      isPlaying = true;
+
+      // replace icon with the pause icon
+      playpause_btn.innerHTML = 'pause';
+    }
+
+    // pauses track when pause button is pressed
+    function pauseTrack() {
+      curr_track.pause();
+      isPlaying = false;
+
+      // replace icon with the play icon
+      playpause_btn.innerHTML = 'play';
+    }
+
+    // moves to the next track
+    function nextTrack() {
+      if (track_index < track_list.length - 1)
+        track_index += 1;
+      else track_index = 0;
+      loadTrack(track_index);
+      playTrack();
+    }
+
+    // moves to the previous track
+    function prevTrack() {
+      if (track_index > 0)
+        track_index -= 1;
+      else track_index = track_list.length;
+      loadTrack(track_index);
+      playTrack();
+    }
+
+    // seeker slider
+    function seekTo() {
+      seekto = curr_track.duration * (seek_slider.value / 100);
+      curr_track.currentTime = seekto;
+    }
+
+    function seekUpdate() {
+      let seekPosition = 0;
+
+      // check if the current track duration is a legible number
+      if (!isNaN(curr_track.duration)) {
+        seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+        seek_slider.value = seekPosition;
+
+        // calculate the time left and the total duration
+        let currentMinutes = Math.floor(curr_track.currentTime / 60);
+        let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
+        let durationMinutes = Math.floor(curr_track.duration / 60);
+        let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
+
+        // adding a zero to the single digit time values
+        if (currentSeconds < 10) { currentSeconds = "0" + currentSeconds; }
+        if (durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+        if (currentMinutes < 10) { currentMinutes = currentMinutes; }
+        if (durationMinutes < 10) { durationMinutes = durationMinutes; }
+
+        curr_time.textContent = currentMinutes + ":" + currentSeconds;
+        total_duration.textContent = durationMinutes + ":" + durationSeconds;
+      }
+    }
+
+    // load the first track in the tracklist
+    loadTrack(track_index);
+  </script>
+  <!-- Last Updated/Hit Count -->
+  <script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var site_data = JSON.parse(this.responseText);
+        var num_arr = site_data.info.views.toString().split("");
+        var num_str = "";
+        for (i = 0; i < num_arr.length; i++) {
+          num_str += num_arr[i];
+          if ((num_arr.length - 1 - i) % 3 == 0 && (num_arr.length - 1 - i) != 0) {
+            num_str += ",";
+          }
+          var date_str = site_data.info.last_updated;
+          var date_obj = new Date(site_data.info.last_updated);
+          document.getElementById("lastupdate").innerHTML = date_obj.getDate() + "." + (date_obj.getMonth() + 1) + "." + date_obj.getFullYear();
+        }
+        document.getElementById("hitcount").innerHTML = num_str;
+      }
+    };
+    xhttp.open("GET", "https://weirdscifi.ratiosemper.com/neocities.php?sitename=taterinx", true);
+    xhttp.send();
+  </script>
+</body>

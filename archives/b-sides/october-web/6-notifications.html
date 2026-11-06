@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://taterinx.neocities.org/projects/october-web/5-notifications">
+        <link rel="octo:octothorpes" href="weirdweboctober">
+        <link rel="octo:octothorpes" href="Notifications">
+        <title>Buzzy Lee</title>
+        <meta name="author" content="Victoria Bramham">
+        <style>
+            body {background: url("ezgif.com-optimize.gif");}
+        </style>
+    </head>
+    <body>
+        <!-- For silence, for silence, I want you back in my head
+             For silence, for silence, I want you back in my bed -->
+        <button onclick="showAlert()" id="storyButton">⋅˚₊‧ ୨୧ ‧₊˚ ⋅</button>
+        <script>
+            const messages = [
+                "I should've held my tongue.",
+                "I shouldn't have kept it going",
+                "I want a love like water through me",
+                "I should've poured my honey slowly",
+                "Wash it away, my Rorschach",
+                "Rorschach."
+            ];
+
+            let currentMessageIndex = 0;
+
+            function showAlert() {
+                if (currentMessageIndex < messages.length) {
+                    alert(messages[currentMessageIndex]);
+                    currentMessageIndex++;
+                    showAlert();
+                } else {
+                    document.getElementById("storyButton").innerText = "Like hell, my hands will give up to twenty times";
+                    document.getElementById("storyButton").onclick = showFinalAlert;
+                }
+            }
+
+        function showFinalAlert() {
+            alert("Hm, my heart will give up too many times.");
+            const button = document.getElementById("storyButton");
+            button.innerText = "I Lay Down My Life For You";
+            button.disabled = true; 
+        }
+        </script>
+    </body>
+</html>

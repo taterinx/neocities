@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>WebComic</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Cherry Cream Soda -->
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Cream+Soda&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div align="center">
+      <div class="writeHeader"></div>
+
+      <!-- make sure that if you want to turn on automatically scrolling to the top of the comic when you load a new page, keep the id of this div and the variable "navScrollTo" in showcomic.js the same-->
+      <div id="showComic">
+
+        <!-- write the title of the page. -->
+        <div class="writePageTitle"></div>
+        <!-- write top navigation -->
+        <div class="writeNav"></div>
+        <!-- write the current page of your comic -->
+        <div class="writePageClickable"></div>
+        <!-- write bottom navigation -->
+        <div class="writeNav"></div>
+        
+      </div>
+    </div>
+    <div id="authorNotes">
+      <h2>Author Notes</h2>
+      <!-- write the author notes for the current page-->
+      <div class="writeAuthorNotes"></div>
+    </div>
+    <div class="writeFooter"></div>
+    <script src="js/comic_settings.js" defer></script>
+    <script src="js/comic_show.js" defer></script>
+    <script src="js/comic_header.js" defer></script>
+    <script src="js/comic_footer.js" defer></script>
+  </body>
+</html>

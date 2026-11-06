@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://taterinx.neocities.org/projects/october-web/4-lists">
+        <link rel="octo:octothorpes" href="weirdweboctober">
+        <link rel="octo:octothorpes" href="Lists">
+        <title>(Antithesis of) Ode2FE</title>
+        <meta name="author" content="Victoria Bramham">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            main {
+                border: 1px solid;
+                font-size: 12px;
+                margin: 5px auto;
+                height: 355px;
+                max-width: 680px;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .flex {
+                display: flex;
+            }
+
+            .limerick {
+                margin: 0 auto;
+                width: 680px;
+            }
+
+            .marquee {
+                border: 1px solid #000000;
+                height: 15px;
+                margin: 0 auto;
+                margin-bottom: 5px;
+                overflow: hidden;
+                position: relative;
+                width: 680px;
+            }
+            
+            .marquee p {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                line-height: 15px;
+                text-align: center;
+                -moz-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+                -moz-animation: scroll-left 2s linear infinite;
+                -webkit-animation: scroll-left 2s linear infinite;
+                animation: scroll-left 20s linear infinite;
+            }
+            
+            @-moz-keyframes scroll-left {
+                0% {
+                    -moz-transform: translateX(100%);
+                }
+                100% {
+                    -moz-transform: translateX(-100%);
+                }
+            }
+            
+            @-webkit-keyframes scroll-left {
+                0% {
+                    -webkit-transform: translateX(100%);
+                }
+                100% {
+                    -webkit-transform: translateX(-100%);
+                }
+            }
+            
+            @keyframes scroll-left {
+                0% {
+                    -moz-transform: translateX(100%);
+                    -webkit-transform: translateX(100%);
+                    transform: translateX(100%);
+                }
+                100% {
+                    -moz-transform: translateX(-100%);
+                    -webkit-transform: translateX(-100%);
+                    transform: translateX(-100%);
+                }
+            }
+        </style>
+        <script type="text/javascript">
+            // <![CDATA[
+            var delay=15; // seconds until scramble takes place once page loaded
+            var colour="#f00"; // colour which letters are highlighted when being swapped
+            
+            /***************************\
+            *     Web-Page Scrambler    *
+            *(c)2005-12 mf2fm web-design*
+            *  http://www.mf2fm.com/rv  *
+            * DON'T EDIT BELOW THIS BOX *
+            \***************************/
+            var elems=new Array();
+            var chars=new Array();
+            var elmax=chmax=0;
+            var nexco="transparent";
+            
+            function addLoadEvent(funky) {
+              var oldonload=window.onload;
+              if (typeof(oldonload)!='function') window.onload=funky;
+              else window.onload=function() {
+                if (oldonload) oldonload();
+                funky();
+              }
+            }
+            
+            addLoadEvent(scramble);
+            
+            function scramble() { if (document.getElementById) {
+              var i, j, txt, parent, span, words;
+              getAllText(document.body);
+              for (i=0; i<elmax; i++) {
+                txt=elems[i].nodeValue;
+                parent=elems[i].parentNode;
+                words=elems[i].nodeValue.split(" ");
+                for (j=0; j<words.length; j++) {
+                  if (words[j].match(/^\w{2,}$/)) {
+                    span=document.createElement("span");
+                    span.appendChild(document.createTextNode(words[j]));
+                    parent.insertBefore(span, elems[i]);
+                    chars[chmax++]=span;
+                  }
+                  else parent.insertBefore(document.createTextNode(words[j]), elems[i]);
+                  if (j!=words.length-1) parent.insertBefore(document.createTextNode(" "), elems[i]);
+                }
+                parent.removeChild(elems[i]);
+              }
+              setTimeout("scrumble()", delay*1000);
+            }}
+            
+            function scrumble() { 
+              var i, l1, r, l2;
+              for (i=0; i<chmax; i++) {
+                l1=chars[i].firstChild.nodeValue.length;
+                do { 
+                  r=i+Math.floor(Math.random()*(chmax-i));
+                  l2=chars[r].firstChild.nodeValue.length;
+                }
+                while (i<chmax-256 && l1!=l2);
+                setTimeout("swap("+i+", "+r+")", 40*i);
+              }
+            }
+            
+            function swap(i, j) {
+              var k=chars[i].firstChild.nodeValue;
+              var l=chars[j].firstChild.nodeValue;
+              if (i) chars[i].style.backgroundColor=nexco;
+              if (i!=chmax-1) {
+                  nexco=chars[i+1].style.backgroundColor;
+                  chars[i+1].style.backgroundColor=colour;
+              }
+              chars[i].firstChild.nodeValue=l;
+              chars[j].firstChild.nodeValue=k;
+            }
+            
+            function getAllText(el) {
+              if (el.nodeType==3 && !el.nodeValue.match(/^\s*$/)) elems[elmax++]=el;
+              if (el.childNodes.length) for (var i=0; i<el.childNodes.length; i++) getAllText(el.childNodes[i]);
+            }
+            // ]]>
+        </script>
+    </head>
+    <body>
+        <main>
+            <div>[] || [] [] v || File Explorer - [] X</div>
+            <div>File Home Share View</div>
+            <div class="flex">
+                <div>
+                    <div class="flex">
+                        <p>[]<br>Pin to Quick access</p>
+                        <p>[]<br>Copy</p>
+                        <p>[]<br>Paste</p>
+                        <div>
+                            <p>[] Cut</p>
+                            <p>[] Copy path</p>
+                            <p>[] Paste shortcut</p>
+                        </div>
+                    </div>
+                    <p>Clipboard</p>
+                </div>
+                <div>
+                    <div class="flex">
+                        <p>[]<br>Move to v</p>
+                        <p>[]<br>Copy to v</p>
+                        <p>[]<br>Delete v</p>
+                        <p>[]<br>Rename</p>
+                    </div>
+                    <p>Organise</p>
+                </div>
+                <div>
+                    <div class="flex">
+                        <p>[]<br>New folder</p>
+                        <div>
+                            <p>[] New item</p>
+                            <p>[] Easy access</p>
+                        </div>
+                    </div>
+                    <p>New</p>
+                </div>
+                <div>
+                    <div class="flex">
+                        <p>[]<br>Properties</p>
+                        <div>
+                            <p>[] Open v</p>
+                            <p>[] Edit</p>
+                            <p>[] History</p>
+                        </div>
+                    </div>
+                    <p>Open</p>
+                </div>
+                <div>
+                    <div>
+                        <p>[] Select all</p>
+                        <p>[] Select none</p>
+                        <p>[] Invert selection</p>
+                    </div>
+                    <p>Select</p>
+                </div>
+            </div>
+            <div><- -> v ^ [[] > Quick access ] v R] [Search Quick access s]</div>
+            <div class="flex">
+                <div>
+                    <p>Quick access []</p>
+                    <p>Desktop []</p>
+                    <p>Documents []</p>
+                    <p>Pictures []</p>
+                    <p>User Documents []</p>
+                    <p>OneDrive - [REDACTED]</p>
+                    <p>This PC</p>
+                    <p>3D Objects</p>
+                    <p>Desktop</p>
+                    <p>Documents</p>
+                    <p>Downloads</p>
+                    <p>Music</p>
+                    <p>Pictures</p>
+                    <p>Videos</p>
+                    <p>Local Disk (C:)</p>
+                    <p>Network</p>
+                </div>
+                <div>
+                    <p>Name | Date modified | Type | Size</p>
+                    <p>v Yesterday (2)</p>
+                    <div class="flex">
+                        <div>
+                            <p>[] activity diary (1).docx</p>
+                            <p>[] Content Calendar (22 to 27 Sep 2024) (V.3...</p>
+                        </div>
+                        <div>
+                            <p>03/10/2024 22:21</p>
+                            <p>03/10/2024 22:21</p>
+                        </div>
+                        <div>
+                            <p>Microsoft Word D...</p>
+                            <p>Microsoft Excel W...</p>
+                        </div>
+                        <div>
+                            <p>16 KB</p>
+                            <p>4,014 KB</p>
+                        </div>
+                    </div>
+                    <p>v Earlier this week (12)</p>
+                    <div class="flex">
+                        <div>
+                            <p>[] cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0Z...</p>
+                            <p>[] prettytrees.png</p>
+                            <p>[] pngtree-the-magpie-bird-is-chirping-pn...</p>
+                            <p>[] Opera Snapshot_2024-10-01_232144_mdi...</p>
+                            <p>[] magpie.png</p>
+                            <p>[] goldenborder.png</p>
+                            <p>[] goldborder.png</p>
+                            <p>[] [REDACTED].html</p>
+                            <p>[] prettytrees.jpg</p>
+                            <p>[] istockphoto-166517007-612x612.jpg</p>
+                            <p>[] prettytrees.jfif</p>
+                            <p>[] mockup.psd</p>
+                        </div>
+                        <div>
+                            <p>01/10/2024 22:11</p>
+                            <p>01/10/2024 23:16</p>
+                            <p>01/10/2024 23:23</p>
+                            <p>01/10/2024 23:21</p>
+                            <p>01/10/2024 23:23</p>
+                            <p>01/10/2024 23:17</p>
+                            <p>01/10/2024 22:06</p>
+                            <p>02/10/2024 13:42</p>
+                            <p>01/10/2024 23:11</p>
+                            <p>01/10/2024 22:15</p>
+                            <p>01/10/2024 23:10</p>
+                            <p>30/09/2024 20:43</p>
+                        </div>
+                        <div>
+                            <p>WEBP File</p>
+                            <p>PNG File</p>
+                            <p>PNG File</p>
+                            <p>PNG File</p>
+                            <p>PNG File</p>
+                            <p>PNG File</p>
+                            <p>PNG File</p>
+                            <p>Opera Web Docu...</p>
+                            <p>JPG File</p>
+                            <p>JPG File</p>
+                            <p>JPG File</p>
+                            <p>JFIF File</p>
+                            <p>Adobe Photoshop...</p>
+                        </div>
+                        <div>
+                            <p>68KB</p>
+                            <p>546KB</p>
+                            <p>781KB</p>
+                            <p>7KB</p>
+                            <p>294KB</p>
+                            <p>73KB</p>
+                            <p>4KB</p>
+                            <p>1KB</p>
+                            <p>2,824KB</p>
+                            <p>34KB</p>
+                            <P>2,701KB</P>
+                            <P>904KB</P>
+                        </div>
+                    </div>
+                </div>
+                <div>Select a file to preview</div>
+            </div>
+        </main>
+        <div class="marquee">
+            <p>Oooh, you want to sort your File Explorer out so bad...</p>
+        </div>
+        <p class="limerick">This is my least favourite list<br>Forever growth, on and on, that's the gist<br>Organise when it'll pile, all those folders of bile<br>(Hope no hacker who hacks works with this)</p>
+    </body>
+</html>

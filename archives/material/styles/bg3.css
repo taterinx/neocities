@@ -1,0 +1,38 @@
+@font-face {
+    font-family: Aldine;
+    src: url("../Aldine.ttf");
+}
+@font-face {
+    font-family: AverageReg;
+    src: url("../Average-Regular.ttf");
+}
+
+/* Resets ---------------------------- */
+* {margin: 0;}
+*, *::before, *::after {box-sizing: border-box;}
+
+img, picture, video, canvas, svg {display: block; max-width: 100%;}
+
+p, h1, h2, h3, h4, h5, h6 {overflow-wrap: break-word;}
+
+h1, h2, h3, h4, h5, h6 {font-weight: 500; color: #e0deda;}
+
+#root, #__next {isolation: isolate;}
+
+/* Body Styles ----------------------- */
+body {
+    height: 100vh;
+    line-height: 1.5;
+    margin: 10px;
+    background: url("../shrines/Edward-vanderghote-houseofhope-02.webp") c;
+    font-family: AverageReg, serif;
+    color: #918781;
+}
+
+/* Text Styles ----------------------- */
+ul {list-style-position: inside; padding-inline: 0;}
+li ul {padding-inline: 20px;}
+
+/* Sidebar --------------------------- */
+aside {float: left;}
+  

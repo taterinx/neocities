@@ -1,0 +1,12 @@
+:root {
+    --cold-one: #E2E0D9;
+    --cold-two: #A7A18D;
+    --cold-tre: #878273;
+    --cold-for: #47453E;
+    --cold-fiv: #242424;
+    --colour-one: #5C7C4C;
+    --colour-two: #C53030;
+    --colour-tre: #444C54;
+}
+
+.fade {animation: fade ease 1s;}

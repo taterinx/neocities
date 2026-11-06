@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- Needs updating to VSC -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://taterinx.neocities.org/projects/october-web/1-nature">
+    <link rel="octo:octothorpes" href="weirdweboctober">
+    <link rel="octo:octothorpes" href="Nature">
+    <title>Magpie Sightings</title>
+    <meta name="author" content="Victoria Bramham">
+    <meta name="description" content="Is it magpie season or something? Idk. Not a bird person.">
+    <style>
+        * {margin: 0; padding: 0;}
+
+        aside {max-width: 200px; border-right: 2px solid #c0975b; padding-right: 5px;}
+
+        body {padding: 5px; color:#ffecb3; background: url('https://taterinx.neocities.org/october-web/prettytrees.png'); max-width: 800px; margin: 0 auto;}
+
+        footer {margin-top: 10px; color: #4b2808;}
+        
+        h1 {
+            background: linear-gradient(to bottom, #c0975b 15%, #ffecb3 20%, #4b2808 78%); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 50px;
+            position: relative;
+        }
+
+        h1::after {
+            background: none;
+            content: "MAGPIE SIGHTINGS";
+            left: 0;
+            top: 0;
+            z-index: -1;
+            position: absolute;
+            text-shadow: 
+                -1px 0 1px #c6bb9f, 
+                0 1px 1px #c6bb9f, 
+                5px 5px 10px rgba(0, 0, 0, 0.4),
+                -5px -5px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        h3:first-child {margin: 0;}
+        h3 {margin-top: 15px; text-decoration: underline;}
+
+        header {margin-bottom: 10px;}
+
+        li {list-style-position: inside; list-style-type: none;}
+
+        main {margin-left: 10px; flex-grow: 3;}
+
+        .column {display: flex;border: 1px solid;
+            padding: 35px;
+            border-image: url('https://taterinx.neocities.org/october-web/goldenborder.png') 40 round;
+            border-image-width: 40px;
+            border-image-outset: 15px;
+            background: radial-gradient(ellipse at center, #4b2808 50%,#000000 100%);}
+
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            border-radius: 4px;
+            display: none;
+            z-index: 1000;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Magpie Sightings</h1>
+        <p><em>I'm seeing more magpies.</em></p>
+    </header>
+    <div class="column">
+        <aside class="box">
+            <img src="https://taterinx.neocities.org/october-web/magpie.png" width="100%">
+            <h3>What is this site for?</h3>
+            <p>To track my luck and misfortune all through sensible means: my magpie encounters.</p>
+            <h3>To-Do List</h3>
+            <input type="checkbox"> Tally up days<br>
+            <input type="checkbox"> Filter days<br>
+            <input type="checkbox"> Clean up layout<br>
+            <input type="checkbox" checked> Find a shiny thing
+        </aside>
+        <main class="box">
+            <h3>October Pies</h3>
+            <ul>
+                <li><strong>01.10.24;</strong> <span class="magpieCount">[1]</span> pecked at my windowsill and fled thescene before I could say 'good morning.'</li>
+            </ul>
+            <h3>September Pies</h3>
+            <ul>
+                <li><strong>28.09.24;</strong> <span class="magpieCount">[1]</span> on walk into town, big field, looked around for more. None, just squirrels. Unremarkable day.</li>
+                <li><strong>??.09.24;</strong> <span class="magpieCount">[7]</span> same route into town. No gold. Saved money at least, walked out of HMV without buying anything.</li>
+            </ul>
+        </main>
+    </div>
+    <footer>
+        <p>Created by Biggus for Weird Web October</p>
+    </footer>
+    <div id="tooltip" class="tooltip"></div>
+    <script>
+        const listItems = document.querySelectorAll('li');
+
+        listItems.forEach(item => {
+            const numberSpan = item.querySelector('.magpieCount');
+        
+            const numberValue = parseInt(numberSpan.innerText.match(/\d+/)[0], 10); 
+            
+            let numberColor;
+        
+            console.log(`Number Value: ${numberValue}`);
+        
+            if (numberValue === 1) {
+                numberColor = 'red'; 
+            } else {
+                numberColor = 'green'; 
+            }
+        
+            numberSpan.style.color = numberColor;
+        });
+
+        // tooltip script
+        
+        const listItemsAgain = document.querySelectorAll('.magpieCount');
+        const tooltip = document.getElementById('tooltip');
+
+        function getTooltipText(value) {
+            switch (value) {
+                case 1:
+                    return "One for sorrow";
+                case 2:
+                    return "Two for joy";
+                case 3:
+                    return "Three for a girl";
+                case 4:
+                    return "Four for a boy";
+                case 5:
+                    return "Five for silver";
+                case 6:
+                    return "Six for gold";
+                case 7:
+                    return "Seven for a secret never to be told"
+                default:
+                    return "This is a number.";
+            }
+        }
+
+        listItemsAgain.forEach(item => {
+            item.addEventListener('mouseenter', (event) => {
+                const numberValueAgain = parseInt(item.innerText.match(/\d+/)[0], 10); // Get the number value from the text content
+                tooltip.innerText = getTooltipText(numberValueAgain); // Set tooltip text
+                tooltip.style.display = 'block'; // Show tooltip
+                tooltip.style.left = `${event.pageX + 5}px`; // Position tooltip
+                tooltip.style.top = `${event.pageY + 5}px`; // Position tooltip
+            });
+
+            item.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none'; // Hide tooltip
+            });
+
+            item.addEventListener('mousemove', (event) => {
+                tooltip.style.left = `${event.pageX + 5}px`; // Update tooltip position
+                tooltip.style.top = `${event.pageY + 5}px`; // Update tooltip position
+            });
+        });
+    </script>
+</body>
+</html>

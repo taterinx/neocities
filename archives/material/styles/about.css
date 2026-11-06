@@ -1,0 +1,9 @@
+aside {min-width: 300px;}
+
+.column {display: flex; justify-content: space-between;}
+
+section:nth-child(2) {display: flex;}
+
+fieldset {flex-grow: 1;}
+fieldset ul {list-style: none; padding-inline: 0; display: flex; flex-wrap: wrap;}
+fieldset ul li {margin: 2px; border: 1px solid black; border-radius: 15px; padding: 0 5px;}

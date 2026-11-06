@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Test</title>
+</head>
+<body>
+    <h1>Personality Test</h1>
+    <!--#blessed (jesus winkin thumbs up) #nofilter #yolo #sorrynotsorry #justdoit #squadgoals #ootd #hipster #randomhashtag #selfie #throwback #⁠foodporn #follow4follow #goodvibes 12 (3 each) #fml -->
+    <form id="personality-test">
+        <h3>1. How are you spending this weekend?</h3>
+        <input type="radio" name="question1" value="squadgoals,sorrynotsorry,throwback"> Partying with my friends in Ibizaaa<br>
+        <input type="radio" name="question1" value="nofilter,hipster,goodvibes"> Staying at home with a good book<br>
+        <input type="radio" name="question1" value="blessed,justdoit,yolo"> Hiking across the alps<br>
+        <input type="radio" name="question1" value="ootd,selfie,follow4follow"> ££ Shopping! ££ Isn't that obvious?<br>
+        <input type="radio" name="question1" value="foodporn,hipster,randomhashtag"> Hm... I'll figure that out once I finish this pizza XD
+        
+        <h3>2. How are you sharing a special life event?</h3>
+        <input type="radio" name="question2" value="selfie,ootd,follow4follow,justdoit"> On my Instagram page, to all 100 of my followers<br>
+        <input type="radio" name="question2" value="nofilter,squadgoals,randomhashtag,yolo"> Dramatic retellings to ALL my awesome sauce friends<br>
+        <input type="radio" name="question2" value="hipster,sorrynotsorry"> I don’t like sharing...<br>
+        <input type="radio" name="question2" value="hipster,blessed,foodporn"> With a one-on-one conversation at a vintage indie cafe<br>
+        <input type="radio" name="question2" value="randomhashtag,sorrynotsorry,goodvibes"> On teh forums! NO ONE is normal there :P
+
+        <h3>3. What is your general attitude towards life?</h3>
+        <input type="radio" name="question3" value="yolo,sorrynotsorry"> Live in the moment<br>
+        <input type="radio" name="question3" value="justdoit"> Always be prepared<br>
+        <input type="radio" name="question3" value="blessed,goodvibes"> Stay positive, even if your friend is being a biatch!<br>
+        <input type="radio" name="question3" value="throwback"> Keep calm and glomp on!<br>
+        <input type="radio" name="question3" value=""> (Insert me looking into the camera totally disapproved)
+<!-- do it for the vine-->
+        <h3>4. How do you express your style?</h3>
+        <input type="radio" name="question4" value="ootd,hipster"> Fashion trends<br>
+        <input type="radio" name="question4" value="hipster,randomhashtag"> Unique and vintage pieces<br>
+        <input type="radio" name="question4" value="blessed"> Comfortable and casual<br>
+        <input type="radio" name="question4" value="goodvibes"> Whatever I feel like wearing<br>
+
+        <h3>5. What is your go-to breakfast?</h3>
+        <input type="radio" name="question5" value="follow4follow,squadgoals"> It's a great way to connect<br>
+        <input type="radio" name="question5" value="nofilter"> It's overrated<br>
+        <input type="radio" name="question5" value="randomhashtag"> It can be fun sometimes<br>
+        <input type="radio" name="question5" value="blessed"> I prefer not to use it much<br>
+
+        <h3>X. Aaand... Finally... thank you for trying this quiz out :3</h3>
+        <input type="radio" name="questionx" value=""> Oh... Oookay?<br>
+        <input type="radio" name="questionx" value=""> Just give me my damn answer already<br>
+        <input type="radio" name="questionx" value=""><br>
+        <input type="radio" name="questionx" value=""><br>
+        <input type="radio" name="questionx" value=""><br><br>
+
+        <button type="button" onclick="calculateHashtag()">Submit</button>
+    </form>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateHashtag() {
+            const form = document.getElementById('personality-test');
+            const hashtagCount = {};
+
+            // Loop through each question and get the selected hashtags
+            for (let i = 1; i <= 5; i++) {
+                const question = form[`question${i}`];
+                for (let j = 0; j < question.length; j++) {
+                    if (question[j].checked) {
+                        // Get all hashtags for the selected answer
+                        let selectedHashtags = question[j].value.split(',');
+                        // Increment the count for each selected hashtag
+                        selectedHashtags.forEach(hashtag => {
+                            hashtagCount[hashtag] = (hashtagCount[hashtag] || 0) + 1;
+                        });
+                    }
+                }
+            }
+
+            // Find the hashtag with the highest score
+            let finalHashtag = null;
+            let maxCount = 0;
+
+            for (const [hashtag, count] of Object.entries(hashtagCount)) {
+                if (count > maxCount) {
+                    maxCount = count;
+                    finalHashtag = hashtag;
+                }
+            }
+
+            // Display the result
+            document.getElementById('result').innerText = "Your hashtag: #" + finalHashtag;
+        }
+    </script>
+</body>
+</html>

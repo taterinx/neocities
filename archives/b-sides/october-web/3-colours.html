@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://taterinx.neocities.org/projects/october-web/3-colours">
+        <link rel="octo:octothorpes" href="weirdweboctober">
+        <link rel="octo:octothorpes" href="Color">
+        <title>The Colour Flipper</title>
+        <meta name="author" content="Victoria Bramham">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background-color: white;
+                font-family: sans-serif;
+                font-weight: bold;
+                height: 100vh;
+                overflow: hidden;
+                padding: 5px;
+            }
+
+            h3 {
+                color: #ffffff;
+                margin-top: 5px;
+                text-align: right;
+            }
+
+            .colour-flip {
+                background: #ffffff;
+                border-radius: 50px; 
+                display: flex;
+                height: 25px;
+                justify-content: space-between;
+                padding: 5px 10px;
+            }
+
+            .details .btn {
+                color: #ffffff;
+                background: #000000;
+                border: none;
+                border-radius: 50px;
+                float: right;
+                font-weight: bold;
+                margin: 0 0 0 5px;
+                padding: 5px 7px;
+                text-transform: uppercase;
+            }
+
+            .details .btn:hover {
+                cursor: pointer;
+            }
+
+            .details span {
+                line-height: 28px;
+            }
+
+            .fortune {
+                color: #ffffff;
+                text-align: center;
+                margin-top: 50px;
+                width: 100vw;
+            }
+
+            .fortune p {
+                max-width: 500px;
+                margin: auto;
+            }
+
+            .fortune span {
+                background: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="colour-flip">
+                <h2>Colour Flipper</h2>
+                <div class="details">
+                    <span class="colour">#FFFFFF</span>
+                    <input type="button" class="btn btn-hero" id="btn" value="Click me">
+                </div>
+            </div>
+            <h3><em>(and fortune teller)</em></h3>
+            <div class="fortune">
+                <p>On an upcoming journey, you will receive something <span class="blank">unknown</span>.</p><br>
+                <p>You may want to seek out something <span class="blank">unknown</span>. You might want to avoid what is <span class="blank">unknown</span>.</p><br>
+                <p>At the end of it all, you will discover a <span class="blank">unknown</span> answer, encounter the <span class="blank">unknown</span>.</p><br>
+                <p>You will always return to what is <span class="blank">unknown</span>.</p>
+            </div>
+        </main>
+        <script>
+            const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+
+            const fortunes = [
+                "brilliant",
+                "adventurous",
+                "prosperous",
+                "courageous",
+                "serene",
+                "radiant",
+                "mysterious",
+                "fearless",
+                "joyful",
+                "ambitious",
+                "playful",
+                "graceful",
+                "passionate",
+                "dynamic",
+                "inspired",
+                "tranquil"
+            ];
+
+            const btn = document.getElementById('btn');
+            const colour = document.querySelector('.colour');
+            const fortuneDisplay = document.querySelectorAll('.blank'); // Select all blanks
+
+            btn.addEventListener('click', function() {
+                let hexColour = '#';
+
+                for (let i = 0; i < 6; i++) {
+                    const hexChar = hex[getRandomNumber()]; 
+                    hexColour += hexChar; 
+
+                    // Generate a random index for the fortunes array
+                    const fortuneIndex = getRandomNumberForFortunes();
+                    fortuneDisplay[i].textContent = fortunes[fortuneIndex]; 
+                }
+
+                colour.textContent = hexColour; // Display the hex code
+                document.body.style.backgroundColor = hexColour; // Change background color
+                document.querySelector('main').style.color = hexColour; // Change text color
+                document.querySelector('.btn').style.backgroundColor = hexColour; // Change button color
+
+                fortuneDisplay.forEach(span => {
+                    span.style.color = hexColour;
+                });
+            });
+
+            // New function to get a random index for the fortunes array
+            function getRandomNumberForFortunes() {
+                return Math.floor(Math.random() * fortunes.length);
+            }
+
+            function getRandomNumber(){
+                return Math.floor(Math.random()*hex.length);
+            }
+        </script>
+    </body>
+</html>

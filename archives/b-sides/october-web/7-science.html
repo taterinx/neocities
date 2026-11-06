@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://taterinx.neocities.org/projects/october-web/7-science">
+        <link rel="octo:octothorpes" href="weirdweboctober">
+        <link rel="octo:octothorpes" href="Science">
+        <title>A matter of BPM</title>
+        <meta name="author" content="Victoria Bramham">
+        <style>
+            /* Compliments to the chef https://cssdeck.com/blog/pure-css-bouncing-ball/ */
+
+            @-webkit-keyframes moveX {from {left: 0;} to {left: 480px;}}
+            @-moz-keyframes moveX {from {left: 0;} to {left: 480px;}}
+            @-o-keyframes moveX {from {left: 0;} to {left: 480px;}}
+            @keyframes moveX {from {left: 0;} to {left: 480px;}}
+            
+            @-webkit-keyframes moveY {from {top: 0;} to {top: 280px;}}
+            @-moz-keyframes moveY {from {top: 0;} to {top: 280px;}}
+            @-o-keyframes moveY {from {top: 0;} to {top: 280px;}}
+            @keyframes moveY {from {top: 0;} to {top: 280px;}}
+
+            body {background: url("docs.png"); overflow: hidden;}
+
+            .bpm {color: white;}
+
+            .tapTempo {
+                background: none;
+                cursor: pointer;
+                position: absolute;
+                -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+                -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+                -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+                animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;}
+                
+            .tapTempo img {
+                width: 250px;
+                height: auto;
+                transition: transform 0.1s ease;
+            }
+
+            .tapTempo:active img {transform: scale(0.5);}
+        </style>
+    </head>
+    <body>
+        <div class="bpm">-</div>
+        <button class="button tapTempo" onclick="beatsPerMinute.show()"><img src="human-heart-42-241x300.png"></button>
+        <script>
+          // Compliments to the chef https://github.com/erhed/bpm-counter-html-javascript
+    
+          let prevTime = 0;
+          let countClicks = 0;
+          let currentTime = 0;
+          let bpm = 0;
+          let timeDifference = 0;
+          let bpmTotal = 0;
+          let bpmFinal = 0;
+    
+          let beatsPerMinute = {
+            show: function() {
+              if (prevTime === 0) {
+                prevTime = Date.now();
+              } else if ((Date.now()-prevTime) > 2200) {
+                this.reset();
+              } else {
+                currentTime = Date.now();
+                timeDifference = currentTime - prevTime;
+                prevTime = currentTime;
+                bpm = 60 / timeDifference;
+                bpmTotal = bpmTotal + bpm;
+                countClicks++;
+                bpmFinal = (bpmTotal / countClicks) * 1000;
+    
+                let result = document.querySelector('div');
+                result.innerHTML = bpmFinal.toFixed(0);
+              }
+            },
+            reset: function() {
+              prevTime = 0;
+              bpm = 0;
+              bpmTotal = 0;
+              bpmFinal = 0;
+              countClicks = 0;
+    
+              let result = document.querySelector('div');
+                result.innerHTML = '-';
+            }
+          }
+    
+        </script>
+      </body>
+</html>

@@ -1,0 +1,75 @@
+:root {
+    --one: #242424;
+    --two: #47453E;
+    --tre: #878273;
+    --for: #A7A18D;
+    --fiv: #E2E0D9;
+    --red: #C53030;
+    --gre: #5C7C4C;
+    --blu: #444C54;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {font-size: 14px;}
+
+html, body, .columns, aside {height: 100%;}
+
+body {
+    font-family: Calibri, sans-serif;
+    overflow-y: hidden;
+}
+
+/* BRIC A BRAC */
+
+aside {
+    background: #888;
+    border-right: 1px solid;
+    overflow-y: scroll;
+    max-width: 200px;
+    padding: .5rem;
+}
+
+footer {
+    border-top: 1px solid;
+    margin: 1rem 0;
+    padding: .5rem 0;
+    text-align: center;
+}
+
+header {
+    align-items: center;
+    background: var(--one); 
+    border-bottom: 1px solid; 
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+}
+
+header h1 {color: var(--fiv);}
+header ol {display: flex; list-style: none;}
+header ol li {margin-left: .5rem;}
+header ol li a {color: var(--fiv); text-decoration: none;}
+header ol li a:hover {color: var(--red);}
+
+main {background: #777; width: 100%;}
+
+main article {
+    background: var(--one);
+    bottom: 0;
+    color: var(--fiv);
+    margin: .5rem;
+    padding: .5rem;
+    position: absolute;
+}
+
+section {margin-bottom: .5rem;}
+section ul {list-style: inside;}
+
+.columns {display: flex;}
+
+.site-update {border: 1px solid; padding: .5rem;}

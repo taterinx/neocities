@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html> <!-- Iframes are some of the coolest pieces of html yet, if you want to keep all the necessary functions of your site javascript-free. Not that I'm against that, but I always read about how it's more a last-resort in the name of accessibility. Interesting how you went out of your way to find this one, though. It's cool. These are the calmer extracts of code you could probably stumble across. How's your day been? (1/?) -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools</title>
+    <link href="/pages/style.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+      button {
+        box-sizing: border-box;
+        border: 1px solid #003c74;
+        background: var(--grey-gradient);
+        border-radius: 3px;
+        padding: 2px;
+        padding-inline: 5px;
+      }
+      button:hover {
+        box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889, inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+      }
+      button:active {
+        box-shadow: none;
+        background: linear-gradient(180deg, #cdcac3, #e3e3db 8%, #e5e5de 94%, #f2f2f1);
+      }
+    
+      li {
+        list-style-type: none;
+        list-bullet-type: none;
+        margin-bottom: 10px;
+        border: var(--borders-field);
+        border-radius: 4px;
+        background: #fff;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+  <main>
+    <center>
+      <p>About a year ago, a friend discovered SpaceHey and a few of us got together to make our profiles and exchange them. That was pretty neat. I don't talk to them anymore but I owe it to them to mention that, because that's what eventually led Biggus Boggus/Inx Browser/whatever to its creation.</p>
+      <p>Perhaps. Turn back time and you'll find that I always had a curiosity for personal webspaces. I never grew up on Tumblr but I was enamoured to hell by all the custom code floating around. Couldn't understand jack so it never became much more than musings of a fifteen year old.</p>
+      <p>Whatever the case, I'm now twenty and finally understanding all the knick knacks that go into making these static sites. And I'm comfortable enough with sharing the resources, tools, and tuts that went into creating Biggus Boggus/Inx Browser/whatever. Peruse to your hearts' content.</p>
+    </center>
+    <hr>
+    <div class="tags">
+      <p>Tags</p>
+      <span id="all">
+        <button class="all">All</button>
+      </span>
+      <span id="tags">
+        <button class="html">HTML/CSS</button>
+        <button class="graphics">Graphics</button>
+        <button class="flair">Flair</button>
+        <button class="tools">Tools</button>
+      </span>
+    </div>
+    <div id="posts">
+      <div class="html">
+        <h1>HTML/CSS</h1>
+        <li><span>
+              <a href="https://sadgrl.online/learn/" target="_blank">Sadgrl's Webmasters Guide</a><br>
+              <em>The</em> perfect beginner's handbook to website building. Explains the fundamentals of HTML code, Neocities specific tutorials, and extra tid-bits to make your site super mega cool. Check her other stuff out too. No regrets.
+          </span></li>
+        <li><span>
+            <a href="https://botoxparty.github.io/XP.css/">XP.css</a><br>
+            A CSS library emulating the styles of retro Windows OS', intended to be imported. I, however, refer to it as more a bible for how to style elements, so that I can understand its components for myself.
+          </span></li>
+        <li><span>
+            <a href="https://fonts.google.com">Google Fonts</a><br>
+            The easiest way to import custom fonts. Con: you can only import what they host; Pro: they've got some neat options - I use DotGothic16, but also recommend VT323 and silkscreen!
+          </span></li>
+        <li><span>
+          <a href="http://howtocenterincss.com" target="_blank">How to Center in CSS</a><br>
+          Centering things shouldn't be too complicated, and yet it can be. This site saved my ass by taking your intentions and spitting out the easiest method for centering elements!
+        </span></li>
+        <li><span>
+            <a href="https://htmlcheatsheet.com" target="_blank">HTML Cheatsheet</a><br>
+            An incredibly useful resource to streamline your coding process, providing quick HTML generators, templates, references, etc. 
+          </span></li>
+      </div>
+      <div class="graphics">
+        <h1>Graphics</h1>
+        <li><span>
+            <a href="https://app.dithermark.com" target="_blank">Dithermark</a><br>
+            The pixelated halftone effect on my pictures? That's dithering, and this website does it for free online to any image you run through it. Lots of neat settings to play around with!
+        </span></li>
+        <li><span>
+          <a href="https://ezgif.com">ezgif.com</a><br>
+          A 100% online tool for creating, modifying, and converting gifs. From really useful compression tools to fun crossfade effects. I've sworn by this site for so many things outside of web building.
+        </span></li>
+      </div>
+      <div class="flair">
+        <h1>Flair</h1>
+        <li><span>
+            <a href="https://status.cafe" target="_blank">Status Cafe</a><br>
+            Quickly share a fun status update and watch it transfer over to wherever you want on your own site. I also use this site to browse other currently active neocities. You find some hidden gems, for sure.
+        </span></li>
+        <li><span>
+          <a href="https://www.imood.com/">imood.com</a><br>
+          Very similar to Status Cafe: send an update, it appears on your site. This time in the form of a cute widget of your specific mood (naturally). You can also elaborate - though that won't sync over to your site.
+        </span></li>
+        <li><span>
+          <a href="https://pastebin.com/PiDgrv3J">Multi-track custom music player</a><br>
+          Courtesy of Adilene.net. Very easy to customise with your own CSS, including rearranging the elements entirely. I managed to fit it within my theme! Plus some useful labels in the Javascript section for further adjustments.
+        </span></li>
+        <li><span>
+          <a href="https://www.timeanddate.com/clocks/free.html">Time and Date</a><br>
+          Add a clock to your site, completely customised to match your layout. Why? 1. So others can see what time it for you if you're on different timezones, 2. it's cute and fun and cool.
+        </span></li>
+        <li><span>
+          <a href="https://www.123guestbook.com">123guestbook.com</a><br>
+          Create a page for others to write nice things about your site and make you want to hold them gently and whisper kind things back and like get married. Customise to your liking, it's very flexible.
+        </span></li>
+        <li><span>
+          <a href="https://gifypet.neocities.org" target="_blank">Gifypet</a><br>
+          Add a pet to your site! Customise everything, from the pet itself to the backgrounds and borders. You (or others) can take care of it with no consequence. Runs at 1fps, so extremely lightweight.
+        </span></li>
+      </div>
+      <div class="tools">
+        <h1>Tools</h1>
+        <li><span>
+          <a href="https://codepen.io/pen/" target="_blank">Code Pen</a><br>
+          A live code editor. I live on this. Type something and it'll poop out the results in seconds, automatically updating with each change. You'll also find some awesome code snippets from others.
+        </span></li>
+        <li><span>
+          <a href="https://www.feedroll.com/rssviewer/" target="_blank">Feedroll's RSS Viewer</a><br>
+          Displays RSS feeds on your site. I use it for my journal page, to which I update with my own Dreamwidth entries. Perfect for blogging on static sites. Read <a href="https://sadgrl.online/learn/articles/blog-dreamwidth" target="_blank">Sadgrl's</a> tutorial!
+        </span></li>
+      </div>
+    </div>
+    </main>
+    <script>
+      const tags = document.querySelectorAll('#tags > button');
+      const posts = document.querySelectorAll('#posts > div');
+      const displayAll = document.getElementById('all');
+  
+    console.log(posts.length);
+  
+    displayAll.addEventListener('click', event => {
+        for (let i = 0 ; i < posts.length; i++) {
+          posts[i].style.display = "inline";
+        }
+    });
+  
+    for (let i = 0 ; i < tags.length; i++) {
+      // when a tag button is clicked...
+    tags[i].addEventListener('click', event => {
+      // identify which classes belong to button
+      const buttonTag = tags[i].getAttribute('class');
+      // loop through post tags
+      for (let i = 0 ; i < posts.length; i++) {
+        // get post tags
+        const postTag = tags[i].getAttribute('class');
+        // if the "all" button is clicked, display everything
+        if (postTag === buttonTag) {
+          // display posts
+          posts[i].style.display = "block"
+  
+        }
+        // if the post tag does not match the button tag...
+        else if (postTag != buttonTag) {
+          // hide the other posts
+          posts[i].style.display = "none"
+        }
+  
+      }
+  
+    });
+    }
+    </script>
+  
+  </body>
+</html>

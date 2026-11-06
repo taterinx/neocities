@@ -1,0 +1,505 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <link href="/pages/style.css" rel="stylesheet" type="text/css" media="all">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Silkscreen&family=VT323&display=swap');
+
+    /* Page Specific CSS */
+    .tabset {
+      max-width: 500px;
+      margin: 5vh auto;
+    }
+
+    .tabset>input[type="radio"] {
+      position: absolute;
+      left: -200vw;
+    }
+
+    .tabset>input:checked+label {
+      background: #fcfcfe;
+      border-color: #919b9c;
+      border-bottom: 1px solid transparent;
+    }
+
+    .tabset>label {
+      border: 1px solid #91a7b4;
+      border-bottom: 0;
+      cursor: pointer;
+      background: linear-gradient(180deg, #fff, #fafaf9 26%, #f0f0ea 95%, #ecebe5);
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+      padding: 2px 12px 0;
+      margin-right: -2px;
+      font-family: "DotGothic16";
+    }
+
+    .tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+    .tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+    .tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+    .tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4) {
+      display: block;
+    }
+
+    .tabset .tab-panel,
+    .tabset .buttontabpanel {
+      display: none;
+    }
+
+    .tab-panels {
+      padding: 14px;
+      background: linear-gradient(180deg, #fcfcfe, #f4f3ee);
+      border: 1px solid #919b9c;
+      margin-bottom: 9px;
+      font-size: 12px;
+    }
+
+    .profile-blurb {
+      display: flex;
+    }
+
+    .profile-blurb ul {
+      flex: 75%;
+      margin: 0;
+      padding: 0;
+      list-style-position: inside;
+    }
+
+    .pfp {
+      flex: 25%;
+      border: var(--borders-light);
+    }
+
+    .pfp img {
+      width: 100%;
+    }
+
+    marquee {
+      background: var(--white-gradient);
+      border-top: var(--borders-light);
+      border-bottom: var(--borders-light);
+      padding-top: 2px;
+    }
+
+    .columns {
+      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .column {
+      flex-grow: 1;
+      max-width: 30%;
+      padding: 5px;
+    }
+
+    fieldset {
+      border: 1px solid #d0d0bf;
+      border-radius: 4px;
+      background: #fff;
+      margin-bottom: 10px;
+    }
+
+    fieldset ul {
+      margin: 0;
+      padding: 0;
+      list-style-position: inside;
+    }
+
+    details>summary {
+      list-style-type: "> ";
+      padding-inline-start: 5px;
+      cursor: pointer;
+    }
+
+    details[open]>summary {
+      list-style-type: "< ";
+    }
+
+    details p {
+      margin-left: 5px;
+      margin-top: 0px;
+    }
+
+    .trivia-btn {
+      text-align: center;
+    }
+
+    .trivia-output {
+      min-height: 30px;
+      background: #fff;
+      border: var(--borders-light);
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    #btnSearch {
+      box-sizing: border-box;
+      border: 1px solid #003c74;
+      background: var(--grey-gradient);
+      border-radius: 3px;
+      padding: 2px;
+      padding-inline: 5px;
+    }
+
+    #btnSearch:hover {
+      box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889, inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+    }
+
+    #btnSearch:active {
+      box-shadow: none;
+      background: linear-gradient(180deg, #cdcac3, #e3e3db 8%, #e5e5de 94%, #f2f2f1);
+    }
+
+    .quizzes {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .results {
+      background-color: #fff;
+      border: var(--borders-light);
+      border-radius: 2px;
+      margin-bottom: 2px;
+      margin-right: 2px;
+    }
+
+    .results-box {
+      display: flex;
+    }
+
+    .results-desc {
+      padding: 5px;
+    }
+
+    .results-link {
+      font-size: 10px;
+      text-align: center;
+      border-top: 1px dotted grey;
+    }
+
+    .results img {
+      border: var(--borders-light);
+      height: 75px;
+      display: block;
+      margin: 2px;
+    }
+
+    #owl {
+      width: 200px;
+    }
+
+    #owl img {
+      max-width: 75px;
+    }
+
+    #ship {
+      width: 375px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="tabset">
+      <input type="radio" name="tabset" id="tab1" aria-controls="profile" checked="">
+      <label for="tab1">Profile</label>
+      <input type="radio" name="tabset" id="tab2" aria-controls="interests">
+      <label for="tab2">Interests</label>
+      <input type="radio" name="tabset" id="tab3" aria-controls="faq">
+      <label for="tab3">FAQ</label>
+      <input type="radio" name="tabset" id="tab4" aria-controls="trivia">
+      <label for="tab4">Trivia</label>
+      <div class="tab-panels">
+        <section id="profile" class="tab-panel">
+          <div class="profile-blurb">
+            <ul>
+              <h1>About</h1>
+              <hr>
+              <br>
+              <br>
+              <li>Name: Biggus</li>
+              <li>Pronouns: She/Her</li>
+              <li>Sign: Scorpio ☼</li>
+              <br>
+              Taken since 24.03.22
+              <br>
+            </ul>
+            <div class="pfp">
+              <img src="https://i.imgur.com/eD6bzJK.gif">
+              <marquee behaviour="scroll" direction="left" scrollamount=3 loop="infinite">
+                <img src="https://i.imgur.com/KQ7CHZH.gif">
+                <img src="https://i.imgur.com/JOgW55i.gif">
+                <img src="https://i.imgur.com/1BKWAOI.gif">
+                <img src="https://i.imgur.com/mUdVSuP.gif">
+                <img src="https://i.imgur.com/Xodo2dv.gif">
+                <img src="https://i.imgur.com/mWdrq18.gif">
+                <img src="https://i.imgur.com/bB8Uwhs.gif">
+                <img src="https://i.imgur.com/6Y8O5a2.gif">
+              </marquee>
+            </div>
+          </div>
+          <p>I grew up on machinima-powered song parodies and whack ass internet subcultures. That’s about… Like… Halfway
+            down the Biggus iceberg? The tip of that berg is that I’m a 20yo Media Studies student in the UK. Boom boom
+            pow.</p>
+          <p>My art endeavors are sporadic at best, but the pen’s been in my hand since diapers so it remains the core of
+            my being, if not through practise then by appreciation. With this, my ever-changing interest in music, games,
+            and the audiovisual.</p>
+          <p>I use the Taterinx handle for all my social medias, so it shouldn't be too hard to find me outside neocities.
+            In any case:</p>
+          <center>
+            <p><a href=mailto:“taterinx@gmail.com” target="_blank">Email</a> -
+              <a href="https://www.instagram.com/taterinx/" target="_blank">Inxstagram</a> - <a
+                href="https://twitter.com/taterinx" target="_blank">Twitter</a>
+            <p>
+          </center>
+        </section>
+        <section id="interests" class="tab-panel">
+          <div class="columns">
+            <div class="column">
+              <fieldset>
+                <legend>Interests</legend>
+                <ul>
+                  <li>Illustration</li>
+                  <li>Music</li>
+                  <li>Production</li>
+                  <li>Drag</li>
+                  <li>Fashion</li>
+                  <li>Photography</li>
+                  <li>Dance</li>
+                  <li>Videogames</li>
+                </ul>
+              </fieldset>
+              <fieldset>
+                <legend>Links</legend>
+                Someone remind me to add my MyAnimeList and Steam sometime.
+              </fieldset>
+              <fieldset>
+                <legend>Film</legend>
+                <u>Favourites</u>
+                <ul>
+                  <li>Isle of Dogs</li>
+                  <li>Jojo Rabbit</li>
+                </ul>
+                <u>Honourables</u></br>
+                The Suicide Squad, The Gentlemen, Glass Onion, Everything Everywhere All at Once, 2001: A Space Odyssey
+              </fieldset>
+            </div>
+            <div class="column">
+              <fieldset>
+                <legend>Music</legend>
+                <ul>
+                  <li>Jungle</li>
+                  <li>UKG/House</li>
+                  <li>Escape Room</li>
+                  <li>Experimental</li>
+                  <li>Eurodance</li>
+                  <li>Rap/Hip Hop</li>
+                </ul>
+                <hr>
+                <u>Favourites</u><br>
+                FKA Twigs, Nia Archives, Little Simz, The Prodigy, Gorillaz, Machine Girl, Danny Brown, Childish Gambino,
+                Slowthai
+              </fieldset>
+              <fieldset>
+                <legend>TV</legend>
+                <u>Currently (re)watching</u><br>
+                RuPaul's Drag Race<br>
+                <hr>
+                <u>Favourites</u>
+                <ul>
+                  <li>Better Call Saul</li>
+                  <li>The Last of Us</li>
+                  <li>Breaking Bad</li>
+                </ul>
+              </fieldset>
+            </div>
+            <div class="column">
+              <fieldset>
+                <legend>Videogames <a href="https://i.imgur.com/d425xMK.jpg" target="_blank">✩</a></legend>
+                <u>Currently playing:</u><br>
+                Two Point Hospital
+                <hr>
+                <ul>
+                  <u>Favourites</u>
+                  <li>Fable II</li>
+                  <li>Borderlands II</li>
+                  <li>Halo 3:ODST</li>
+                  <li>Portal II</li>
+                  <li>Skyrim</li>
+                  <li>Cult of the Lamb</li>
+                  <li>Psychonauts II</li>
+                  <li>Vampire Survivors</li>
+                </ul>
+                <hr>
+                <details>
+                  <summary>Multiplayer</summary>
+                  <ul>
+                    <li>Minecraft</li>
+                    <li>Sea of Thieves</li>
+                  </ul>
+                </details>
+                <details>
+                  <summary>Previously Played</summary>
+                  <p>Animal Crossing series, Club Penguin, Deep Rock Galactic, Final Fantasy XIII series, Halo series,
+                    Hypnospace Outlaw, Ikenfell, Just Dance series, Lego: Pirates of the Caribbean, Omori, Pikuniku,
+                    Plague Tale: Innocence, Rayman Origins, Rayman Legends, Resident Evil 7: Biohazard, Super Mario Galaxy
+                    series, Tomb Raider, Turnip Boy Commits Tax Evasion, Two Point series, Undertale, Unpacking, Void
+                    Bastards, What Remains of Edith Finch, Yu-Gi-Oh Legacy of the Duelist: Link Evolution
+                  <p>
+                </details>
+              </fieldset>
+              <fieldset>
+                <legend>Anime</legend>
+                <u>Favourites</u><br>
+                <ul>
+                  <li>Great Pretender</li>
+                  <li>K-On</li>
+                  <li>Made in Abyss</li>
+                  <li>Attack on Titan</li>
+                  <li>Haruhi Suzumiya</li>
+                </ul>
+              </fieldset>
+            </div>
+          </div>
+        </section>
+        <section id="faq" class="tab-panel">
+          <details>
+            <summary>"What's this site, like, actually for?"</summary>
+            <br>
+            <p>There's no larger project underpinning the site, nor is it meant as a portfolio/marketing tool for a
+              product. It's an Instagram profile without the Instagram. Just little passions, interests, html snippets and
+              experimentations.</p>
+            <p>Modern social media is alright, I'll always use it to communicate with my irl social circles, but neocities
+              is where cool kids discover other cool kids; bound by nothing but the web code repositories in our heads.
+              It's a bit preachy but it is what it is - this site is just for me.</p>
+          </details>
+          <details>
+            <summary>"Can I use your code/graphics?"</summary>
+            <br>
+            <p>The answer is that it depends.</p>
+            <p>Most blinkies/stamps/buttons on this site were found without any credits, so there's really no
+              repurcussions to you snagging them for yourself. I haven't really any jurisdiction on that.</p>
+            <p>Graphics that I've created for myself I'll expect some credits via a link back to this site. This includes
+              my dithered graphics (pfp, background, etc.) and any art I may post.</p>
+            <p>Please don't steal my layouts, even if you swear on your nan's grave you'll give me credit (and even if you
+              actually do) - it's less about the time spent to then not get credited, and more a matter of this site being
+              unique to me.</p>
+            <p>Any snippets, however, such as the clock function, guestbook, rss journal, etc. you're free to take.
+              Because those weren't mine to begin with. Check out my <a href="https://taterinx.neocities.org/pages/tools"
+                target="_self">tools</a> page where I link to the tutorials/websites used to create those.</p>
+          </details>
+          <details>
+            <summary>"When will this site be finished?"</summary>
+            <br>
+            <p>My project-related pages will probably take a couple months to create. I have a severe depression that
+              takes a lot of energy out of me, so I won't be able to provide an ETA.</p>
+            <p>The rest of the site itself will reach an 'alpha' state once every page, including those project pages, are
+              set up. Even then, the site will continue to change and morph. It's living, breathing.</p>
+          </details>
+          <details>
+            <summary>"Why Taterinx/Biggus?"</summary>
+            <br>
+            <p>About six years back, I just liked the sound of tater tots and had since fucked around with it for funsies
+              as my 'official' handle: atomic-tatertot, tatertotter, tottertorii, tatersnotter; I settled with Taterinx
+              around 2020/21 time, because it felt cooler and official-er.</p>
+            <p>Fast forward to when I watched Life of Brian and hehe'd at the Biggus Dickus joke. My real name's Victoria,
+              so my Discord nickname for some time was Biggus Vickus. People started calling me Biggus. I thought it
+              sounded cute.</p>
+          </details>
+        </section>
+        <section id="trivia" class="tab-panel">
+          <center>
+            <p>The biggest naval gaze ever.</p>
+            <div class="trivia-btn">
+              <div class="trivia-output">
+                <p id="message"></p>
+              </div>
+              <input type="button" id="btnSearch" value="Generate Fact" onclick="GetValue();" />
+            </div>
+            <br>
+            <hr>
+          </center>
+          <div class="quizzes">
+            <div class="results" id="owl">
+              <div class="results-box">
+                <div class="results-desc">
+                  This page is protected by a OWL<br><br>
+                  A group of owls is called a parliament.
+                </div>
+                <img alt="OWL" src="https://i.ibb.co/MSGxtwm/owl.jpg">
+              </div>
+              <div class="results-link">
+                <a href="https://hekate.neocities.org">Want your own? Visit hekate.neocities.org!</a>
+              </div>
+            </div>
+            <div class="results" id="cheese">
+              <a href="http://cupped-expressions.net/cheese/quiz/" TARGET=NEW><img src="https://i.imgur.com/x9MCojQ.gif"
+                  alt="I am mozzarella!"></a>
+              <div class="results-link">
+                <a href="http://cupped-expressions.net/cheese/quiz/" TARGET=NEW>Cheese Test: What type of cheese are
+                  you?</a>
+              </div>
+            </div>
+            <div class="results" id="isopod">
+              <a href="https://casiopea.neocities.org/isopod/isopodquiz.html"><img
+                  src="https://i.imgur.com/xUOxoig.png"></a>
+              <div class="results-link"><A href="https://casiopea.neocities.org/isopod/isopodquiz.html">Which isopod are
+                  you? (Credit: casiopea)</a></div>
+            </div>
+            <div class="results" id="clown">
+              <a href='https://clownfredzone.neocities.org/clownquiz.html'><img
+                  src='https://clownfredzone.neocities.org/cq/MimeSquare1.png'
+                  alt='I am a Mime! Click here to take the clown quiz!'></a>
+              <div class="results-link"><A href="https://clownfredzone.neocities.org/clownquiz.html">Take the clown
+                  quiz!</a></div>
+            </div>
+            <div class="results" id="hachune">
+              <a href="https://www.theotaku.com/quizzes/view/3913/which_hatsune_miku_nendoroid_model_are_you%3F"><img
+                  src="http://www.theotaku.com/guru_results/3913_Hachune_Miku.jpg"
+                  alt="Which Hatsune Miku Nendoroid Model Are You?" /></a>
+              <div class="results-link"><A
+                  href="https://www.theotaku.com/quizzes/view/3913/which_hatsune_miku_nendoroid_model_are_you%3F">Hosted
+                  By theOtaku.com</a></div>
+            </div>
+            <div class="results" id="sonic">
+              <a href="https://theotaku.com/quizzes/view/2838/what_sonic-x_character_are_you%3F"><img border="0"
+                  src="http://www.theotaku.com/guru_results/2838_Sonic.jpg" alt="What Sonic-X Character Are You?" /></a>
+              <div class="results-link"><a
+                  href="https://theotaku.com/quizzes/view/2838/what_sonic-x_character_are_you%3F">What Sonic-X Character
+                  Are You?</a></div>
+            </div>
+            <div class="results" id="backpack">
+              <a href="http://suppi.net/slg">
+                <img src="https://i.imgur.com/Y7XZ91I.jpg" border="0" alt="Take the anime accessory quiz"></a>
+              <div class="results-link"><a href="http://suppi.net/slg">Take the Anime Accessory quiz!</a></div>
+            </div>
+            <div class="results" id="ship">
+              <div class="results-box">
+                <a href="http://quiz.ravenblack.net/videogame.pl"><img src="http://quiz.ravenblack.net/videogame/3.png"
+                    alt="What Video Game Character Are You? I am a Thrust-ship."></a>
+                <div class="results-desc">
+                  I am small and tricky - where you think I am, I probably am not. I can work very fast, but I tend to go
+                  about things in a round about way, which often leaves me effectively standing still. I hate rocks.
+                  Bloody rocks.
+                </div>
+              </div>
+              <div class="results-link">
+                <a href="http://quiz.ravenblack.net/videogame.pl">What Video Game Character Are You?</A>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script>
+    function GetValue() {
+      var myarray = new Array("Student housing landlords won't let me keep a cat", "Mum holds a vendetta against cats. They would steal her bed as a kid, apparently", "My nan has a cat allergy", "My mum's boyfriend hates cats", "I would really like a cat ):", "Credit to anaraven on Github for the .js here!", "My favourite colour is a warm red. Surprise! I just like to use it sparingly, for impact", "Slowthai performed at my uni, and that was my first and currently only concert", "I lick ice cream and lightly chew sweets/chocolate - sensitive teef thingy", "I bite", "Describe myself in one word? Inconsistent - I am an everchanging deity (ooo ahhh)", "My Club Penguin username was Vickyer", "I like to say I believe in some sorta pseudo-scientifically grounded afterlife", "I designed my first tattoo after a hybrid of Alduin, Yu-Gi-Oh's Blue Eyes White, and my dad's dragon tats", "My guilty pleasures are the ye olde British girl groups the Sugarbabes and Girls Aloud", "I'm technically an INFP-T? If I recall?", "As it stands, I'm a left-wing Green Party voter (would prefer to not start a debate though, this place isn't for my political leanings)");
+      var random = myarray[Math.floor(Math.random() * myarray.length)];
+      //alert(random);
+      document.getElementById("message").innerHTML = random;
+    }
+  </script>
+</body>

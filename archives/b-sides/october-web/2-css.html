@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://taterinx.neocities.org/projects/october-web/2-css">
+        <link rel="octo:octothorpes" href="weirdweboctober">
+        <link rel="octo:octothorpes" href="CSS">
+        <title>Non-Commitment</title>
+        <meta name="author" content="Victoria Bramham">
+        <style>
+            * {
+                margin: 0; 
+                padding: 0;
+            }
+
+            a {
+                color: #363636;
+            }
+
+            .art {
+                color: #ececec;
+                position: fixed;
+                top: 100px;
+                width: 100vw;
+                z-index: 50;
+            }
+
+            body {
+                font-family: sans-serif;
+                font-size: 10px;
+                font-weight: bold;
+                line-height: 1.25;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            footer {
+                bottom: 10px;
+                color: #363636;
+                position: fixed;
+                width: 100vw;
+                z-index: 1000;
+            }
+            
+            .checkbox {
+                position: relative;
+                width: 100%;
+                height: 25px;
+                opacity: 0;
+                cursor: pointer;
+                z-index: 3;
+            }
+
+            .knobs, .layer {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+            
+            .knobs {z-index: 2;}
+            
+            .layer {
+                background-color: #ececec;
+                transition: 0.3s ease all;
+                z-index: 1;
+            }
+
+            #btns .knobs:before,
+            #btns .knobs:after {
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                width: 48vw;
+                color: #ececec;
+                
+                padding: 9px 4px;
+                background-color: #363636;
+                transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+            }
+
+            #btns .knobs:before {content: "Yes";}
+
+            #btns .knobs:after {content: "No";}
+
+            #btns .knobs:after {
+                top: -28px;
+                right: 4px;
+                left: auto;
+                background-color: #ececec;
+                color: #363636;
+            }
+
+            #btns .checkbox:checked + .knobs:before {
+            top: -28px;
+            }
+
+            #btns .checkbox:checked + .knobs:after {
+            top: 4px;
+            }
+
+            #btns .checkbox:checked ~ .layer {
+            background-color: #363636;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="art" id="white"></div>
+        <div class="art" id="black">
+            <pre>
+                |                   
+                /                    
+                |                    
+               /                     
+               |                     
+              /                      
+             /|                      
+       --   //   |                   
+         \-- |   |     --            
+           \-    | ---/              
+            |\- --/                  
+            ---/-|                   
+     -\   -/     |                   
+       -\                            
+         -\                          
+           -\                        
+             -\                      
+               -\       /-           
+                 -\   /-             
+                   -/-               
+                  /- -               
+               /--                   
+             /-                      
+           /-                        
+         /-            -     /       
+   ----\-               \   |-\      
+/--- -- -------\    /----\- /  ---\  
+----              -------      |       --
+            </pre><br>
+            <p>"I'm reaching-- breaking thresholds,"</p>
+            <p>I would like to say.</p>
+            <p>In truth, nothing happens yet.</p>
+        </div>
+        <div class="button r" id="btns">
+            <input type="checkbox" class="checkbox">
+            <div class="knobs"></div>
+            <div class="layer"></div>
+        </div>
+        <footer>
+            <p>Made by Biggus for <a href="https://weirdweboctober.website" target="_blank">weird web october</a> [day 2: CSS]</p>
+            <p>This switch is entirely css; tysm <a href="https://codepen.io/singhimalaya/pen/EdVzNL?editors=0100" target="_blank">Himalaya</a></p>
+        </footer>
+    </body>
+</html>

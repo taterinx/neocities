@@ -1,0 +1,75 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal</title>
+  <link href="/pages/style.css" rel="stylesheet" type="text/css" media="all">
+  <style>
+    /* Page Specific CSS */
+    #first {display: flex; justify-content: space-between; border-bottom: var(--borders-dark); padding-bottom: 5px;}
+    #first #spacehey {flex: 75%; border: var(--borders-field); border-radius: 4px; background: #fff; margin-bottom: 10px;}
+    #first #spacehey ul {margin: 0; padding: 0; list-style-position: inside;}
+    #first #gallery img {height: 150px; width: 150px;}
+
+    #dreamwidth .rss-item {list-style-type: none;}
+    #dreamwidth .rss-date {display: inline-block; font-style: italic;}
+    #dreamwidth ul {padding-inline-start: 0;}
+    #dreamwidth li {border: var(--borders-field); border-radius: 4px; padding: 10px; margin-bottom: 15px; background: #fff;}
+
+    img {border: var(--borders-field); border-radius: 2px;}
+
+    details>summary {padding-inline-start: 0px !important;}
+    details p {margin-left: 0px !important; margin-top: 10px !important;}
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Journal</h1>
+      <p>The words of Biggus from across the web</p>
+    </header>
+    <div id="first">
+      <fieldset id="spacehey">
+        <legend>Recent SpaceHey Entries</legend>
+        <script language="JavaScript" src="https://feedroll.com/rssviewer/feed2js.php?src=https%3A%2F%2Frss.spacehey.com%2Fblog_user%3Fid%3D137704&num=5&targ=y&utf=y" charset="UTF-8" type="text/javascript"></script>
+        <noscript>
+          <a href="https://feedroll.com/rssviewer/feed2js.php?src=https%3A%2F%2Frss.spacehey.com%2Fblog_user%3Fid%3D137704&num=5&targ=y&utf=y&html=y">View RSS feed</a>
+        </noscript>
+      </fieldset>
+      <div id="gallery">
+        <script>
+          // Loads images
+          var images = [
+            "https://files.catbox.moe/bi787c.jpg",
+            "https://files.catbox.moe/7p7k8u.jpg",
+            "https://files.catbox.moe/c966iy.jpg",
+            "https://files.catbox.moe/99d6zm.jpg",
+            "https://files.catbox.moe/f30jbh.jpg",
+            "https://files.catbox.moe/jaa7rc.jpg",
+            "https://files.catbox.moe/lei4mk.jpg"
+          ];
+          // This chooses a random number from all available image indices
+          var randomImage = images[Math.floor(Math.random() * images.length)];
+          console.log(randomImage);
+          // Make the URL into a proper image tag
+          var image = "<img src='" + randomImage + "'>";
+          // Append to the div
+          document.getElementById("gallery").innerHTML = image;
+        </script>
+      </div>
+    </div>
+    <div id="dreamwidth">
+      <center>
+        <p>Here, you'll find my recent Dreamwidth entries. Big content warning for discussion of low mental health and occassional NSFW language. Nothing too bad, but read at ur own discretion :)</p>
+      </center>
+      <script language="JavaScript" src="https://feedroll.com/rssviewer/feed2js.php?src=https%3A%2F%2Ftaterinx.dreamwidth.org%2Fdata%2Frss&date=y&utf=y&html=a" charset="UTF-8" type="text/javascript"></script>
+      <noscript>
+        <a href="https://feedroll.com/rssviewer/feed2js.php?src=https%3A%2F%2Ftaterinx.dreamwidth.org%2Fdata%2Frss&date=y&utf=y&html=y">View RSS feed</a>
+      </noscript>
+      <footer>
+        <center>
+          <p>Handcrafted w/ help from <a href="https://sadgrl.online/learn/articles/blog-dreamwidth" target="_blank">Sadgirl</a> - Constructed on <a href="https://www.feedroll.com/rssviewer/" target="_blank">Feedroll</a>
+        </center>
+      </footer>
+    </div>
+  </main>
+</body>

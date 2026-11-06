@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BIRTHDAY 2026 | Taterinx</title>
+        <meta name="description" content="Page Description.">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/biggusbirthday2026.css">
+    </head>
+    <body class="quiz-page">
+        <div class="page-wrapper">
+            <div class="columns">
+                <main>
+                    <header>
+                        <h1 id="quiz-header">The Ultimate Biggus LikeNess Quiz</h1>
+                        <p><a href="/pages/biggusbirthday2026.html">Return to the Party</a> | Take the quiz to discover how similar you are to Biggus</p>
+                    </header>
+                    <form name="quizform" id="biggus-quiz">
+                        <section>
+                            <h4>1. You have a day off, what are you doing?</h4>
+                            <ul>
+                                <li><label><input type="radio" name="q1" value="0" checked="">Last minute hangout with friends</label></li>
+                                <li><label><input type="radio" name="q1" value="2">Cleaning my house/doing other errands</label></li>
+                                <li><label><input type="radio" name="q1" value="1">A solo adventure outside</label></li>
+                                <li><label><input type="radio" name="q1" value="3">Chilling with a book/show/movie</label></li>
+                                <li><label><input type="radio" name="q1" value="5">Starting/continuing a creative project</label></li>
+                                <li><label><input type="radio" name="q1" value="4">On my ass with my games</label></li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h4>2. Someone's given you the aux, how do you DJ?</h4>
+                            <ul>
+                                <li><label><input type="radio" name="q2" value="0" checked="">Choose a Spotify-made playlist</label></li>
+                                <li><label><input type="radio" name="q2" value="1">Play a local radio station</label></li>
+                                <li><label><input type="radio" name="q2" value="5">Put on your favourite song right now and hand the aux to someone else</label></li>
+                                <li><label><input type="radio" name="q2" value="4">Play your full, one hour, uninterrupted, pre-planned mix</label></li>
+                                <li><label><input type="radio" name="q2" value="3">Give your aux to someone else and judge them the entire time</label></li>
+                                <li><label><input type="radio" name="q2" value="2">Put your liked songs on shuffle regardless of the party's collective taste</label></li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h4>3. What is your texting style?</h4>
+                            <ul>
+                                <li><label><input type="radio" name="q3" value="3" checked="">Immediate responses, almost too immediate</label></li>
+                                <li><label><input type="radio" name="q3" value="5">Three-to-five business days</label></li>
+                                <li><label><input type="radio" name="q3" value="2">Spam twelve messages in a row</label></li>
+                                <li><label><input type="radio" name="q3" value="4">Send mostly memes, reaction images/GIFs, or short videos</label></li>
+                                <li><label><input type="radio" name="q3" value="0">Everyone is muted, you are only reachable by niche platforms</label></li>
+                                <li><label><input type="radio" name="q3" value="1">You actually just call everyone (and no one likes this, apparently)</label></li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h4>4. What is, objectively, the best 2002 album?</h4>
+                            <ul>
+                                <li><label><input type="radio" name="q4" value="2" checked="">Queens of the Stone Age - Songs for the Deaf</label></li>
+                                <li><label><input type="radio" name="q4" value="1">System of a Down - Steal This Album!</label></li>
+                                <li><label><input type="radio" name="q4" value="3">dälek - From Filthy Tongues of Gods and Griots</label></li>
+                                <li><label><input type="radio" name="q4" value="4">The Streets - Original Pirate Material</label></li>
+                                <li><label><input type="radio" name="q4" value="5">The Chemical Brothers - Come With Us</label></li>
+                                <li><label><input type="radio" name="q4" value="0">Other</label></li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h4>5. How do you hope others view you the most?</h4>
+                            <ul>
+                                <li><label><input type="radio" name="q5" value="2" checked="">Attractive</label></li>
+                                <li><label><input type="radio" name="q5" value="3">Reliable</label></li>
+                                <li><label><input type="radio" name="q5" value="5">Cool</label></li>
+                                <li><label><input type="radio" name="q5" value="1">Friendly</label></li>
+                                <li><label><input type="radio" name="q5" value="4">Hilarious</label></li>
+                                <li><label><input type="radio" name="q5" value="0">Distant</label></li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h4>6. What is at the top of your birthday wishlist?</h4>
+                            <ul>
+                                <li><label><input type="radio" name="q6" value="2" checked="">A videogame or games console</label></li>
+                                <li><label><input type="radio" name="q6" value="1">Makeup, clothes or accessories</label></li>
+                                <li><label><input type="radio" name="q6" value="3">A totally wild, bizarre oddity</label></li>
+                                <li><label><input type="radio" name="q6" value="5">Something handcrafted</label></li>
+                                <li><label><input type="radio" name="q6" value="0">Money or gift cards</label></li>
+                                <li><label><input type="radio" name="q6" value="4">An experience (e.g., cinema, vacation, concert tickets)</label></li>
+                            </ul>
+                        </section>
+                        <p>
+                            <button type="submit">Submit</button>
+                            <button type="reset" id="reset_quiz">Reset</button>
+                        </p>
+                        <div id="result_div" style="display: none;">
+                            <h2>Your Result</h2>
+                            <!--<img id="result_image" alt="">-->
+                            <p id="result_text"></p>
+                            <!--<p>BBCode:<br>
+                            <textarea rows="3" cols="30" id="result_bbcode"></textarea></p>
+                            <p>HTML:<br>
+                            <textarea rows="3" cols="30" id="result_html"></textarea></p>-->
+                        </div>
+                    </form>
+                </main>
+                <aside>
+                    <h2>Becoming The Biggest</h2>
+                    <h3><strong>6 Steps to Infinite Sauce</strong> by Bobamna</h3>
+                    <p>Biggus has eluded the minds of many with their incredible wisdom in the field of Awesome Sauce. The Pseudonymous Not-Biggus (Age 48) says, "it's not fair. I find myself a lovely woman, drop the bomb that I'm Not-Biggus and that just-- it just breaks her. She threw a molotov cocktail through my car window. You just can't win these days." Which then begs the question: what does it take to become Biggus?</p>
+                    <p>Through extensive research, we have compiled six tips that will 100% gaurantee Big Mode.</p>
+                    <h4>Tip #1: Home is Where the Head is</h4>
+                    <p>Turn daydreaming into more than just a carefree indulgence or hidden vice, let it be all that you are. Biggus' carry out decades of their lives in their heads, before it even begins, if it even begins. In your head, time is infinite and thus the sauce endless.</p>
+                    <h4>Tip #2: Start the Project; Layoff the Team</h4>
+                    <p>Whether it be a new game idea, art piece or prose, grab a journal and plan everything in extensive detail, making sure to research it thesis-style. Once you're done, find a new idea to violate. Rinse and repeat.</p>
+                    <h4>Tip #3: It Could be 20% Cooler</h4>
+                    <p>Approach everything with playful scrutiny, based on your own arbitrary ideas of what Cool is. If you don't like it, it's loser shit. If you like it, push it to the max. Contrary to popular belief, cool is not just about nonchalance. It's much simpler than that, it's unwavering confidence in yourself and your own aesthetic sensibilities; you are the Editor in Chief.</p>
+                    <h4>Tip #4: The Path of Least Resistance</h4>
+                    <p>You don't need drama. If a social media carousel is trying to get a rise out of you, scroll away. If the comments section is rancid, scroll away. Emotionally invest in the things that really matter: friendship and steaze. And the yuck admin stuff.</p>
+                    <h4>Tip #5: Everynyan's a Winner</h4>
+                    <p>Make uplifting others your default state. Celebrate your friends, follow up on the things that they share. Check in on them when they're struggling. Let the people you luv know that you luv them. Chances are: they luv you too.</p>
+                    <h4>Tip #6: Submit to No One</h4>
+                    <p>Don't let any weird man with unresolved issues convince you that you are helpless or illogical or manic. Have faith in your individuality (hobbies, interests, dreams) and if they don't like it or are disappointed that it doesn't match their expectation of you then walk away.</p>
+                    <p>If you choose to follow this guide and bare positive results, don't hesitate to forward them to us either via taterinx[at]gmail[dot]com or RE: The Ultimate Biggus Likeness Quiz, which we may use as testimony. And, as always, we are not liable for any swag abundances. Please use your surplus responsibly. Bobamna, signing out.</p>
+                </aside>
+            </div>
+            <footer>
+                <p><em>This may be a given but it's worth emphasising that any of the results should not make you legitimately concerned for our connection, whoever you may be. Please take it all in jest. I also refuse to redact any statements regarding objective best 2002 album. Quiz code provided by <a href="https://www.dragonflycave.com/free-quiz-scripts/" target="_blank">The Cave of Dragonflies</a>.</em></p>
+                <p><strong>Contact:</strong> please redirect any concerns, bug reports or general inquiries to taterinx[at]gmail[dot]com.
+                <br>All content, unless otherwise stated, is property of Taterinx (2023-2026)</p>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            (function() {
+                var QUIZ_URL = "https://taterinx.neocities.org/biggusbirthday2026-quiz.html";
+                var RESULTS_FOLDER_URL = "https://taterinx.neocities.org/resources/images/";
+
+                var RESULTS = {};
+
+                RESULTS[0] = {
+                    name: "Result 1",
+                    text: "It's a resounding zero, which doesn't necessarily mean we're complete opposites. We're just in our separate lanes, crossing over just one time for a five minute conversation. If this result is any indicator, you will get over it."
+                };
+
+                RESULTS[6] = {
+                    name: "Result 2",
+                    text: "You could be my 'designated niche interest' person. We keep each other in the loop on this one thing, whatever it is, never meeting IRL. That part is important, something-something, 'maintaining universal balance,' you get it. You know how this goes."
+                };
+
+                RESULTS[12] = {
+                    name: "Result 3",
+                    text: "You're so close to being half of Biggus. It's okay, though. We may share a mutual friend who has flanderised us equally in her head to be one specific thing and has paired us together as a result, even if they're a tad bit off. 'Whatever makes them happy,' we both say."
+                };
+
+                RESULTS[18] = {
+                    name: "Result 4",
+                    text: "Ooh, we're frieeends and I like you! We're not identical and that's okay because our interests are close enough that we mesh really well with each other while still being our own distinct people. I'd call you first if I were ever bored."
+                };
+
+                RESULTS[24] = {
+                    name: "Result 5",
+                    text: "If we're not best friends yet, why not?! There's clearly no huge disparity between what we like and how we approach our everyday lives... Probably. I mean, I don't want to investigate that. Congrats, almost-Biggus."
+                };
+
+                RESULTS[30] = {
+                    name: "Result 6",
+                    text: "Full marks, Biggus. I'm not sure if that warrants a badge of honour or not because, I mean, you're just being you and being you just so happens to also be me, Biggus. [is23ia] We would probably HATE each other, inclined to kiss or kill."
+                };
+
+                var FORM_NAME = 'quizform';
+
+                var form = document.forms[FORM_NAME];
+                var form_elements = document.forms[FORM_NAME].elements;
+                var form_element;
+                var result_div = document.getElementById("result_div");
+                var result_image = document.getElementById("result_image");
+                var result_text = document.getElementById("result_text");
+                var result_bbcode = document.getElementById("result_bbcode");
+                var result_html = document.getElementById("result_html");
+                var min_score = 0;
+                var min_scores = {}
+                var error = false;
+
+                // Validate the quiz form to prevent common issues
+                for (var i = 0; i < form_elements.length; i++) {
+                    form_element = form_elements[i];
+                    if (form_element.type === "radio" || form_element.type === "checkbox") {
+                        if (isNaN(form_element.value)) {
+                            alert("You have an answer on your quiz with a non-numerical value (" + form_element.value + "). You probably made a typo.");
+                        }
+                        else {
+                            if (form_element.name in min_scores) {
+                                if (form_element.value * 1 < min_scores[form_element.name]) {
+                                    min_scores[form_element.name] = form_element.value * 1;
+                                }
+                            }
+                            else {
+                                min_scores[form_element.name] = form_element.value * 1;
+                            }
+                        }
+                    }
+                }
+
+                for (var q in min_scores) {
+                    min_score += min_scores[q];
+                }
+
+                error = true;
+                for (var score in RESULTS) {
+                    if (score <= min_score) {
+                        error = false;
+                        break;
+                    }
+                }
+                if (error) {
+                    alert("The lowest score it is possible to get on your quiz is lower than the minimum score you have defined a result for. You've probably made a mistake somewhere.");
+                }
+
+                form.onsubmit = function() {
+                    var score = 0;
+                    var result_scores = [];
+                    var result;
+                    var form_element;
+                    var i;
+
+                    for (i = 0; i < form_elements.length; i++) {
+                        form_element = form_elements[i];
+                        if ((form_element.type === "radio" || form_element.type === "checkbox") && form_element.checked) {
+                            score += form_element.value * 1;
+                        }
+                    }
+
+                    for (var min_score in RESULTS) {
+                        result_scores.push(min_score * 1);
+                    }
+
+                    result_scores.sort(function (a, b) {
+                        return a - b;
+                    });
+
+                    for (i = 0; i < result_scores.length; i++) {
+                        if (result_scores[i] <= score) {
+                            result = RESULTS[result_scores[i]];
+                        }
+                    }
+
+                    if (result.link) {
+                        window.location = result.link;
+                        return false;
+                    }
+
+                    if (result_image) {
+                        result_image.src = RESULTS_FOLDER_URL + result.image;
+                        result_image.setAttribute('alt', result.name);
+                        if (result.text) result_image.title = result.text;
+                    }
+                    if (result_text && result.text) {
+                        result_text.innerHTML = result.text;
+                    }
+                    if (result_bbcode) {
+                        result_bbcode.innerHTML = '[url=' + QUIZ_URL + '][img]' + RESULTS_FOLDER_URL + result.image + '[/img][/url]';
+                    }
+                    if (result_html) {
+                        result_html.innerHTML = '<a href="' + QUIZ_URL + '"><img src="' + RESULTS_FOLDER_URL + result.image + '" alt="' + result.name + '" title="' + result.text + '"></a>';
+                    }
+                    result_div.style.display = 'block';
+                    result_div.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    return false;
+                };
+            })();
+
+            var reset_button = document.getElementById("reset_quiz");
+
+            reset_button.addEventListener("click", function() {
+                result_div.style.display = "none";
+                window.setTimeout(function () {
+                    document.getElementById("quiz-header").scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }, 0);
+            });
+
+
+
+            /*************************************************************************
+            Free quiz script from The Cave of Dragonflies:
+            http://www.dragonflycave.com/free-quiz-scripts
+            *************************************************************************/
+        </script>
+    </body>
+</html>

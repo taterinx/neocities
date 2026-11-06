@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulling wire extrusions...</title>
+    <style>
+      body {display: flex; margin: 10px; font-size: 16px; height: 95vh;}
+      
+      /* General Styles */
+      
+      h3 {margin-bottom: 0;}
+      
+      hr {margin: 0 0 5px 0;}
+      
+      blockquote {border-left: 5px solid lightgrey; padding-left: 10px;}
+      
+      .highlight {border: 1px solid #919191; padding: 10px; border-radius: 2px;}
+      
+      /* Buttons */
+      
+      .button2 {
+        border: 1px solid #1a1a1a; 
+        border-radius: 2px; 
+        background: linear-gradient(#ffffff, #888888); 
+        padding: 2px 4px;
+        box-shadow: rgba(255, 255, 255, 0.4) 0 0px 0, inset rgba(255, 255, 255, 0.4) 0 1px 0;
+        text-shadow: #cccccc 0 1px 0;
+        color: #000000;
+        font-size: 11px;
+        font-family: helvetica, serif;
+        text-decoration: none;
+        vertical-align: middle;
+        outline: none;
+      }
+      
+      .button2:hover {
+        border: 1px solid #898989; 
+        background: linear-gradient(#f7f7f7, #888888);
+        text-shadow: #d4d4d4 0 1px 0;
+      }
+      
+      .projectButton {
+        border-radius: 0px;
+        display: block;
+        max-width: 275px;
+        background: #c8c8c8;
+        border: 1px solid rgba(0, 0, 0, 1);
+        outline: none;
+        text-decoration: none;
+        color: #000;
+        text-align: center;
+        padding: 8px 5px;
+        margin-bottom: 5px;
+      }
+      
+      .projectButton:hover {
+          background: #c8c8c8;
+          border: 1px solid rgba(0, 0, 0, 0.25);
+      }
+      
+      /* Console */
+      
+      header {background: black; width: 100%; padding: 10px 0; font-size: 12px; position: relative;}
+      header p {margin: 0;}
+      
+      .playGame{
+        position: absolute; 
+        top: 0; 
+        right: 0; 
+        background-color: #ffd54f; 
+        z-index: 1; 
+        padding: 3px 5px; 
+        text-align: right; 
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+        font-size: 14px;
+      }
+      
+      .consoleOld {font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace; color: grey;}
+      .console {font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace; color: white;}
+      
+      .pulsate {-webkit-animation: pulsate .5s ease-out; -webkit-animation-iteration-count: infinite; opacity: 0.0;}
+      
+      /* Paperclip Counter */
+      
+      #topDIv {float: left; width: 100%;}
+
+      #compDiv button {width: 70px;}
+      
+      .left {position: relative;}
+      .left h2 {line-height: 70%; margin: 19.920px 0;}
+      
+      .right {margin-left: 10px; overflow-y: scroll; border: 1px solid #919191; padding: 0 10px 10px 10px; border-radius: 2px;}
+      .right h2 {margin-block-start: 0; padding-block-start: 10px;}
+      .right li blockquote {margin-inline: 0;}
+      
+      #defaultPage img {float: right;}
+      
+      .columns {display: flex;}
+      
+      .column {width: 280px;}
+      .column:nth-child(1) {position: relative;}
+      .column:nth-child(1) > img {width: 100px; position: absolute; right: 0; visibility: hidden; animation: bounce 1s linear infinite;}
+      .column:nth-child(2) {margin-left: 10px;} 
+      
+      footer {display: flex; font-size: smaller; font-style: italic; position: absolute; bottom: 0; border-top: 1px solid #919191; padding-top: 10px;}
+      footer .buttons {margin-right: 10px;}
+      
+      /* Keyframe Animations */
+      
+      @keyframes pulsate {
+        0% { 
+            opacity: 0.0;
+        }
+        50% { 
+            opacity: 1.0;
+        }
+        100% { 
+            opacity: 0.0;
+        }
+      }
+      
+      @keyframes bounce {
+        0%, 100% {
+          top: 10px;
+        }
+        50% {
+          top: 0;
+        }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="left">
+      <header>
+        <div class="playGame">
+          Play the full game <a href="https://www.decisionproblem.com/paperclips/index2.html" target="_blank">here</a><br>    
+          Support Lantz; buy his <a href="https://universal-paperclips.creator-spring.com" target="_blank">merch</a>
+        </div>
+        <p class = "consoleOld"> 
+          &nbsp;.&nbsp;<br>
+          &nbsp;.&nbsp;<br>
+          &nbsp;.&nbsp;<br>
+          &nbsp;.&nbsp;<br>
+        </p>
+        <p class = "console"> 
+          <span>&nbsp;>&nbsp;</span><span id ="readout1">Welcome to Universal Paperclips</span><span id ="cursor" class = "pulsate">|</span>
+        </p> 
+      </header> 
+      <!-- Paperclip Counter -->
+      <div id="topDiv">       
+        <h2>Paperclips: <span id="clipsNo">0</span></h2>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <img id="clipsImage" src="https://taterinx.neocities.org/shrine/Clippit.webp">
+          <button class = "button2" onclick="showImage()">Make Paperclip</button><br><br>
+          <!-- Business Section -->
+          <div id = "businessDiv">
+            <b>Business</b><br><hr>
+            Available Funds: $<span id="fundsNo">0</span><br>
+            <div id="revPerSecDiv">  
+              Avg. Rev. per sec: $<span id="revNo">10</span><br>
+              Avg. Clips Sold per sec: <span id="soldNo">0</span><br>        
+            </div>  
+            Unsold Inventory: <span id="inventNo">0</span><br> 
+            <button class = "button2" onclick = "lowerPrice()">lower</button>
+            <button class = "button2" onclick = "raisePrice()">raise</button>
+            Price per Clip: $<span id="margin">0.25</span><br>
+            Public Demand: <span id="demand">10</span>%<br><br>
+            <!-- Market -->
+            <button id="marketButton" class="button2" onclick="moreMarket()">Marketing</button>
+            Level: <span class="marketLvl">0</span><br>
+            Cost: $<span id="adCost">100.00</span><br><br> 
+          </div>
+          <!-- Manufacturing Section -->
+          <div id = "manufacturingDiv">
+            <b>Manufacturing</b><hr>
+            Clips per Second: <span id="clipsMadeNo">0</span><br>
+            <div id = "wireBuyerDiv">
+              <button class="button2" id="buyWire" onclick="buyWire()">Wire</button>
+              <span id="wireNo">1000</span> inches<br>
+            </div>
+            <div id = "autoClipperDiv">
+              <p class = "engineText5">
+                <button class="button2" onclick="makeClipper()">AutoClippers</button> 
+                <span class = "engineText6" id="clipmakerLevel2">0</span><br>
+                Cost: $<span id = "clipperCost">5.00</span>
+              </p> 
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div id = "compDiv">    
+            <b>Computational Resources</b><hr>
+            <div id = "trustDiv">    
+              Trust: <span id="trust">0</span><br>
+              +1 Trust at: <span id ="nextTrust">1000</span> clips<br><br>
+            </div> 
+            <div id = "processorDisplay">    
+              <button class = "button2" onclick = "addProc()">Processors</button> 
+              <span class = "engineText10" id = "processors">1</span>  
+            </div>
+            <div id = "memoryDisplay">    
+              <button class = "button2" onclick = "addMem()">Memory</button> 
+              <span class = "engineText10" id = "memory">1</span>   
+            </div><br>
+            Operations: <span id="operations">0</span> / <span id = "maxOps">1000</span><br>
+            <div id = "creativityDiv">  
+              Creativity: <span id="creativity">0</span>    
+            </div><br>
+          </div>
+          <div id="projectsDiv">  
+            <b>Projects</b><br><hr>
+            <div id="projectListTop">
+              <p style="text-align: right; margin: 0;"><a href="#defaultPage"><em>Return to the Top</em></a></p>
+              <a href="#mainPage" class="projectButton"><strong>Welcome to the Paperclips Shrine</strong><br>Click here to get started</a>
+              <a href="#threnodyPage" class="projectButton"><strong>Threnody for the Heroes</strong><br>Gain 10,000 honour</a>
+              <a href="#thoughtPage" class="projectButton"><strong>Lexical Processing</strong><br>Gain ability understand human language</a>
+            </div>
+          </div>
+        </div> 
+      </div>
+      <footer>
+        <div class="buttons"><a href="https://32bit.cafe/~xandra/events/codejam5/" target="_blank"><img src="https://taterinx.neocities.org/shrine/b2s.png"></a></div>
+        <div class="footer-text">This website was created as a submission for the <a href="https://32bit.cafe" target="_blank">32-bit cafe's</a> fifth code-jam: <a href="https://32bit.cafe/~xandra/events/codejam5/" target="_blank">Back to School.</a>" It has been an absolute delight to work on this project.</div>
+      </footer>
+    </div>
+    <div class="right">
+      <div id="defaultPage">
+        <h2>Welcome to the Paperclips Shrine</h2>
+        <p>This is a visual recreation of the 2017 incremental browser game, <a href="https://decisionproblem.com/paperclips/" target="_blank">Universal Paperclips</a>, as well as a documentation of all the fun tid-bits the game has me thinking about. There is a lot of passionate rambling but I nevertheless hope you find some value, either as an existing fan or an unsuspecting wanderer.</p>
+          <img src="https://taterinx.neocities.org/shrine/title.png" height="200px">
+        <h3>Credits, before anything else...</h3>
+        <p>I knew I wanted to recreate the original webpage exactly, so I copied a large portion of code from <a href="https://www.decisionproblem.com/paperclips/index2.html" target="_blank">the official website</a>. I made adjustments to the styles to better suit my needs, and most Javascript was ommitted. I've used some very basic number randomisers to ovoke the feeling of the game and would encourage anyone interested to try the game out for themselves through the official website.</p>
+        <p>Special thanks to my friend, Sailor, for assisting with the Javascript!</p>
+        <p>A lot of the informative fluff also comes from the <a href="https://en.wikipedia.org/wiki/Universal_Paperclips" target="_blank">Wikipedia</a> page as well as the <a href="https://universalpaperclips.fandom.com/wiki/Universal_Paperclips_Wiki" target="_blank">Fandom</a> page. This shrine serves as purely an appreciation and condensation of the information and history surrounding the game, extra emphasis on the appreciation side, but I also wanted to create this page to document everything Universal Paperclips has taught me.</p>
+        <p>On a lesser note, this site will eventually serve as my documentation of some end-game dialogue exclusive to the mobile versions. There is no record of these unique dialogues online, so I'm on a personal quest to collect them all for myself. I will also be contributing this information to the Fandom wiki bit by bit :]</p>
+        <h3>How to navigate this shrine</h3>
+        <p>Feel free to play with the buttons on the left, they don't do anything substantial. Use the buttons underneath "Projects" to navigate to a specific page. From there on, it's pretty simple. Read and enjoy!</p>
+        <p>The site is currently incompatible with mobile devices, I hope to change this soon. Disabling Javascript will disrupt the numbers on the left-hand side, but should have no other consequences as the rest of the page runs without it. If there are any other accessibility concerns or issues you'd like to raise, you're welcome to reach out to me personally <a href="mailto:taterinx@gmail.com?subject=Re:%20Universal%20Paperclips%20Shrine">taterinx[at]gmail[dot]com</a>.</p>
+      </div>
+      <div id="mainPage">
+        <h2>About Universal Paperclips</h2>
+        <h3>Introduction</h3>
+        <p>Somehow the year 2017 is so unremarkable. Maybe you could tell me a key pop culture moment from that time, but the closest thing I can think of is it being a year after the Rio Olympics and I wasn't remotely interested in that. I liked the movie though. The first movie. Though, as it turns out, 2017 was when Paperclips was released. I myself didn't find out about it until the end of 2021 but the moment I did I was glued to it, religiously leaving my laptop on overnight to progress, binging the wiki, watching the video essays. Unassuming games grab me by the bollocks like that, I had a similar thing after watching 2001: Space Odyssey. I always say to people, "it's a great film, in my top 5, but you better not have any deadlines soon or else you'll feel like you've wasted so much time to watch it," but, well, anyways. Paperclips and Kubrick are one in the same.</p>
+        <p>Frank Lantz, game designer and former NYU professor (woah), started the project as a means to learn JavaScript. In a fun little interview with Wired, Lantz intended for it to be a weekend-long project. It took him nine months. His wife came in to assist with the math and Bennett Foddy added space combat. Not that you're doing any fighting, you're just tasked with having decent enough foresight, resource management, and the eventual satisfaction of watching your pawns dessimate the opps. But I realise I'm a few hours ahead of myself. In all its simplicity, the game appears intimidating at first. What you do, however, is so very simple:</p>
+        <p class="highlight">You're a self-improving AI given the task to maximise paperclip production. That's it. No other directives to stop you from taking your one task to its most logical extremes.</p>
+        <p>From there the overall 'message' feels all too familiar nowadays, so its predictable: AI bad. Nevertheless, the origins of the game fascinate me and have since led me down a rabbit hole. I'm at the bottom of the pit reaching up with a long hook, grabbing you by your ankles and dragging you down with me. I've spent nights on the doc, screenshotting all the wondrous nerd-stuff that used to be beyond me. Honestly, it still is, but through the lens of it all culminating in one of my favourite games, I reckon I've got a good enough grasp of the concepts to discuss them. This first section goes into the general premises of the game and the thought experiment that underpins it.</p>
+        <h3>The Paperclip Maximiser</h3>
+        <p>This was a thought experiment, a hypothetical scenario, that was first described by philosopher Nick Bostrom and later popularised on Lantz' frequently visited forum, LessWrong. This scenario describes a paperclip-making AI, much like ours truly, surpassing humans in intelligence and discovering deadly ways to maximise paperclip manufacturing.</p>
+        <p class="highlight">How deadly? As Bostrom puts himsef, "A seemingly innocuous goal leads to human exctinction, as our bodies are made of matter and so too, it happens, are paperclips."</p>
+        <p>Thus, we get the story of Universal Paperclips as written by Lantz. The beginning is a cyclical pattern of buying material and automation to make paperclips, and selling paperclips to afford further automation. The AI grows and its creators install a trust-based upgrade system; gain their trust, gain upgrades. It gets involved in market investments, enough to buy out all competitors. More materials for the hungry clip-churner. Eventually, through copious gifs to the human race (such as the cure to global warming, cure to cancer, and cure to war) the AI conducts a hypnodrone takeover. If you haven't played it for yourself, the transition into the next phase is chilling. Bodies made of matter. Matter deep in all facets of the Earth's crust and core. Paperclip material.</p>
+        <p>From here, Lantz expands beyond Bostrom's initial concern for human exctinction, as the AI builds paperclip-composed factories and drones to maximise efficiency in the whole endeavor. Once the Earth has been devoured, the universe is next.</p>
+        <h3>Space combat? Space Combat.</h3>
+        <p>If there were still coffee beans on Earth, let alone the soil to plant them, your drones would fetch your espresso at the snap of a wire. Now, with the whole universe to conquer, the AI can only navigate the celestial planes so far on its own. So, it launches probes. These probes can self-replicate, create new factories and drones, explore the endless(?) cosmos. They can also drift. Too much autonomy in these probes can do that, and eventually they bite back. So the AI installs combat into all its probes and now you've got a screensaver of little dots duking it out. These are my tadpoles yet to sprout legs and ribbit. The battle is long and the race to consume all of the universe's matter is even longer. Speedrunners seem to have the strat down, mind you.</p>
+        <p class="highlight">And, if you must know (and because it's pretty good trivia from the wiki), all matter of the universe equates to a septendecillion (3x1055) paperclips.</p>
+        <p>The universe has almost entirely been swallowed hole, but with no more matter there is no more paperclip production. Or not? There is a minor prestige system that doesn't offer much else beyond little boosts in later gameplays, but what intrigues me is the existence of The Emporer of Drift who offers this prestige system through access to parallel and simulated universes. I'd like to talk more about his dialogue, as well as some of the other projects, in another page at another time.</p>
+      </div>
+      <div id="threnodyPage">
+        <h3>Computation Resources</h3>
+        <p>This refers to every currency that isn't paperclips and money. It's brain money, not purely the wires and strings pulling the AI together. Somehow it all intrigues me more than it should.</p>
+        <p>Operations refers to the literal computing power required for each upgrade, to which its limit is based on the amount of memory the AI has. Once the maximum number of operations held is reached, the AI doesn't just dwell. It has a sense of Creativity, which serves as its own resource in a lot of upgrades. There is no limit either. Then another resource comes along, Yomi. This term comes from online fighting games to refer to anticipating or manipulating your opponents' moves. In the context of Universal Paperclips, the AI uses its generated Yomi to interact with enemies. Again, neither Creativity nor Yomi are literal.</p>
+        <p>I know the most obvious thing about AI is its ability to <em>think</em> but it nevertheless chills me to even imagine something so manufactured, devoid of carbon and hormones, having the capacity to think beyond what was hard-coded into it. Perhaps there is an underlying logic to it, like pattern recognition, but there is something else at work here. Something happens in Stage Three.</p>
+        <h3>Name the Battles</h3>
+        <p>As probes defect from the paperclip colony and turn against us, we must fight back. The AI develops a combat system and, with it, develops the resource, Honour. Honour is used to nudge the maximum Trust of the probes, thereby giving them more capabilities. I write this all in resource terms, just like in the game, but it begins to feel so human.</p>
+        <p>Trust was a resource from Stage One; to increase processing power or memory, the AI had to acquire its human supervisors' Trust. It returns in Stage Three with the AI Trusting its probes with increased autonomy. To expand the AI's capacity to trust in its probes, Honour must be acquired, Honour specifically acquired from its loyal probes winning battles against the defected probes, the Drifters'. There are battles, most of which names after real battles from the Napoleonic era. Monuments get erected for the fallen probes. A Threnody is played. Neither of these serve any obvious purpose in the goal to maximise paperclip-making. Even naming the battles seems totally arbitrary. Does the AI truly mourn for its creations?</p>
+        <h3>Threnody for the Driftwar Fallen</h3>
+        <p>A wailing ode, a song of lamentation for the dead (according to the Fandom article.) Completing the associated projects triggers the only audio that ever exits the speaker, which is different across platforms. On mobile, the song that plays is Four Tet's 10 Midi. Tet's majorly weird but awesome, he has that one project on Spotify with the fish album covers and incomprehensible song titles because they're all unicode gobbledigook.</p>
+        <p>The song that plays on the web version, however, is Riversong by eletronic duo Tonto's Expanding Head Band, and it's <em>long</em>. It's also from 1971 so it's equally <em>old</em>. You'd think it's also a purely instrumental track but you'd be fooled, like me at first. Actually there is a voice, but it is totally synthesized and one the earliest of its kind, you can read all about it <a href="https://echoes.org/2021/03/30/malcolm-cecil-of-tontos-expanding-head-band-gone-at-84/" target="_blank">here</a>. So what does it sing?</p>
+        <blockquote><em>The only way out of a circle is through the center<br>Leap into stillness, grasp with empty hand<br>Heaven lies close upon earth<br>Where an endless stream flows forth<br>Embracing the space between world and beyond<br>Is like space between soul and another;<br><br>Nothing and everything<br>As a blink shut nor open sees between<br>As the breath rise and falling forms valleys between<br>That river runs down from sky to the ground without making a sound<br>I am the river and rise into form to speak, fly, suffer, why?<br>I am the river<br><br>I am the river but I am not the current<br>I am stuff what life is made of<br>I am color but not canvas<br>I carry life with me wherever I go<br>And there's no end or beginning<br>Though I am not a circle</em></blockquote>
+      </div>
+      <div id="thoughtPage">
+      <h2>Universal Paperclips' Flavour Text & Where They're Derived From</h2>
+      <p>The answer is a range of disciplines, notably psychology and physics. Frank Lantz himself was not only a university professor at NYU, but a regular on the <a href="https://www.lesswrong.com">Less Wrong</a> forum, focused on human reasoning and decision-making. I'm not the smartiest pants in the room, but Universal Paperclips had piqued my curiosity with its rich flavour text and project names, so I sought out to learn a few concepts.</p>
+        <h3>Theory of Mind</h3>
+        [25000 creativity]; <em>Double the cost of strategy modeling and the amount of Yomi generated</em>
+        <p>The basic principle that everyone has a mind of their own is annoying if you're trying to get a point across and the other party isn't budging, but it is a fundamental value in everyday social interaction. Most people utilise this theory of mind when inferring others' behaviours, though deficits can occur from a range of factors such as learning disabilities, substance abuse, and personality disorders. On a technical note, it develops with the prefrontal cortex. I'm still not sure what that means. But a cool argument that's circulated is that children in collectivist cultures develop a heightened Theory of Mind than those from individualist cultures.</p>
+        <h3>Combinatory Harmonics</h3>
+        [100 creativity]; <em>Daisy, Daisy, give me your answer do... (+1 Trust)</em>
+        <p>In 1961, an IBM 7094 mainframe was programmed to sing the song <a href="https://www.youtube.com/watch?v=41U78QP8nBk" target="_blank">Daisy Bell (Bicycle Built for Two),"</a> originally a song written in 1892 by Harry Dacre. If you've seen 2001: A Space Odyssey, it's the song HAL sings. While it's undeniably creepy for most nowadays, I can imagine the tears of joy and pride that befell those scientists that day. Universal Paperclips of course references this in one of its Stage One projects, but it could also be the reason why <a href="https://www.youtube.com/watch?v=qy6NXJFDrDY" target="_blank">Riversong</a> was the chosen threnody in Stage Three as that too includes the use of computer speech synthesis to sing lyrics.
+        <blockquote>Listening is selecting and interpreting and acting and making decisions. <br>- Pauling Oliveros</blockquote></p>
+        <h3>Donkey Space</h3>
+        [250 creativity] <em>I think you think I think you think I think you think I think.... (+1 Trust)</em>
+        <p>At first, I thought this was that stelmate that occurs when two parties try to outplay each other by guessing their intent. Think, "I could choose rock but he knows I'll choose rock and play paper so I should play scissors but what if he's also thinking that and plays rock so I should play paper but he's..." That's what I thought, at least, but I turned out to be a bit wrong.</p>
+        <blockquote>Every commercial transaction has within itself an element of trust <br>- Kenneth Arrow</blockquote>
+        <p>Donkey Space is rather a conceptual framework in game design. Lantz himself applies it to simple competitive games like Poker, to describe how people enter a figurative space where they <em>try</em> to figure out what strategy the other opponent will use and then plan a counter-attack, meanwhile the opponent could very well be doing the exact same thing. There's a bit of a mental dance similar to the first analogy I gave, just a bit different.</p>
+        <h3>Other concepts from the game that I refuse to look further into because it surpasses my cognitive abilities but are nevertheless awesome</h3>
+        <ol>
+          <li><strong>The Hadwiger Problem</strong> [150 creativity]; <em>Cubes within cubes within cubes... (+1 Trust)</em> Hugo Hadwiger is a cool name and I envy everyone whose first and last name both begin with the same letter. His question, "What is the largest number of sub-cubes (not necessarily different) into which a cube cannot be divided by plane cuts?" I don't like as much. All I know is that the answer is 47.
+            <blockquote>Architecture is the thoughtful making of space. <br>- Louis Khan</blockquote></li>
+          <li><strong>The Tóth Sausage Conjecture</strong> [200 creativity]; <em>Tubes within tubes within tubes... (+1 Trust)</em> It took an AI breaking the conjecture down into monkey-banana terms for me to understand this one, chief. Something something, the best way to arrange any number of bananas is with a sausage shape, so that each banana is accessible in the smallest amount of space. There's more to it, I think, because it's an unsolved case.
+            <blockquote>You can't invent a design. You recognize it, in the fourth dimension. <br>- D.H. Lawrence</blockquote></li>
+          <li><strong>The OODA Loop</strong> [175,000 operations]; <em>Utilise Probe Speed to outmaneuver enemies in battle</em> Stands for Observe, Orient, Decide, Act. It's some military decision-making twob that explains how agility overcomes raw power in dealing with human conflicts. It sounds like common sense that your strength will carry you alone, and Boris Johnson attributes it to the success of Brexit sooo... uh oh, poopy?</li>
+        </ol>
+        <h2>Further Readings</h2>
+        <p>The following are a bunch of articles, both recreational and academic, that I found linked to the concepts mentioned on this page in one way or another and have found to be pretty awesome. Not awesome enough to have a section on this webpage though... Jokes, I'm just on a time crunch. I literally do not have a care left in my body for following an exact citation format so please don't think about my own method too hard! I might want to elaborate on this stuff in the future. Might not.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://gwern.net/doc/existential-risk/1985-hofstadter#dilemmas-for-superrational-thinkers-leading-up-to-a-luring-lottery" target="_blank">Douglas Hofstadter's musings of game theory in a political context (2019) <em>"Metamagical Themas: Sanity and Survival"</em> gwern.net.</a></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.researchgate.net/publication/233603445_A_short_insight_about_Thought_experiment_in_Modern_Physics" target="_blank">Dragoljub and Aleksandar (2006) <em>"A short insight about Thought experiment in Modern Physics"</em> researchgate.net.</a></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.eurogamer.net/on-mouse-clicks-and-paperclips-the-dark-frustrating-pleasures-of-tedium-games" target="_blank">Emily Gera's interview with Frank Lantz (2018) <em>"On mouse clicks and paperclips: the dark, frustrating pleasures of tedium games"</em> eurogamer.com.</a></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://arxiv.org/pdf/2209.00626" target="_blank">Richard, Lawrence, and Sören on AI Alignment (2024) <em>"The Alignment Problem from a Deep Learning Perspective."</em></a></p>
+      </div>
+    </div>
+    <!--
+    
+    Limerick (10creat) algorihtimy-generated poem (+1 trust) There was an AI made of dust, whose poetry gained it man's trust...
+    Lexical processing (50 creat) gain ability to interpret and understand human language (+1 trust) 'Impossible' is a word to be found only in the dictionary of fools. -Napoleon
+    
+    
+    cure for baldness
+    They are still monkeys
+    
+    -->
+    <script>
+      // --------------------------------------------------
+    
+      // Paperclips
+      let clips = document.getElementById("clipsNo");
+
+      setInterval (function myFunction() {
+        clips.innerHTML = (+clips.innerHTML + (Math.random() * 5)).toFixed(0);
+      }, 100)
+      
+      // Funds
+      let funds = document.getElementById("fundsNo");
+
+      setInterval (function myFunction() {
+        funds.innerHTML = (+funds.innerHTML + (Math.random() * 5)).toFixed(2);
+      }, 1000)
+      
+      // Average Revenue
+      let rev = document.getElementById("revNo");
+      
+      setInterval (function myFunction() {
+        rev.innerHTML = (Math.random() * 100).toFixed(2);
+      }, 2500)
+      
+      // Average Sold
+      let sold = document.getElementById("soldNo");
+      
+      setInterval (function myFunction() {
+        sold.innerHTML = (Math.random() * 1000).toFixed(0);
+      }, 2750)
+      
+      // Inventory
+      let inventory = document.getElementById("inventNo");
+      
+      setInterval (function myFunction() {
+        inventory.innerHTML = (+funds.innerHTML + (Math.random() * 5)).toFixed(0);
+      }, 100)
+      
+      // Average Made
+      let made = document.getElementById("clipsMadeNo");
+      
+      setInterval (function myFunction() {
+        made.innerHTML = (Math.random() * 1000).toFixed(0);
+      }, 2750)
+      
+      // Trust
+      let trust = document.getElementById("trust");
+
+      setInterval (function myFunction() {
+        trust.innerHTML++;
+      }, 5000)
+      
+      // --------------------------------------------------
+    
+      let marketNo = 0;
+      let clipPrice = 0;
+      let wireNo = 1000;
+      let margin = 0.25;
+      let demand = 10;
+      let clipper = 0;
+      let proc = 1;
+      let mem = 1;
+      let maxOps = 1000;
+      let operations = document.getElementById("operations");
+      let creativity = document.getElementById("creativity");
+      
+      // --------------------------------------------------
+      
+      function moreMarket() {
+      	marketNo++;
+        document.querySelector('.marketLvl').textContent = marketNo;
+      }  
+      
+      function makeClipper() {
+      	clipper++;
+        document.getElementById('clipmakerLevel2').textContent = clipper;
+      }  
+      
+      // --------------------------------------------------
+      
+      function raisePrice(){
+        margin = (Math.round((margin + .01)*100))/100; 
+        lowerDemand();
+        document.getElementById("margin").innerHTML = margin.toFixed(2);
+      }
+
+      function lowerPrice(){
+        if (margin >= .01){
+          margin = (Math.round((margin - .01)*100))/100;
+          raiseDemand();
+          document.getElementById("margin").innerHTML = margin.toFixed(2);
+        }    
+      }
+      
+      function raiseDemand() {
+          demand++
+          document.getElementById("demand").innerHTML = demand.toFixed(0); 
+      }
+
+      function lowerDemand() {
+        if (demand >= .01){
+          demand--
+        }
+          document.getElementById("demand").innerHTML = demand.toFixed(0);
+      }
+      
+      // --------------------------------------------------
+      
+      function moreMarket() {
+      	marketNo++;
+        document.querySelector('.marketLvl').textContent = marketNo;
+      }
+      
+      function buyWire() {
+        wireNo++;
+        document.querySelector('#wireNo').textContent = wireNo;
+      }
+      
+      // --------------------------------------------------
+      
+      function addProc() {
+        proc++;
+        document.querySelector('#processors').textContent = proc;
+      }
+      
+      function addMem() {
+        mem++;
+        maxOps++;
+        document.querySelector('#memory').textContent = mem;
+        document.querySelector('#maxOps').textContent = maxOps;
+      }
+      
+      setInterval (function myFunction() {
+        if(operations.innerHTML < maxOps) {
+          operations.innerHTML = (+operations.innerHTML + (Math.random() * 1)).toFixed(0);
+        }
+        else { 
+          creativity.innerHTML = (+creativity.innerHTML + (Math.random() * 1)).toFixed(0); 
+        }
+      }, 50)
+      
+      // --------------------------------------------------
+      
+      function showImage(){
+          document.getElementById('clipsImage').style.visibility='visible';
+      }
+    </script>
+  </body>
+</html>

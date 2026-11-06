@@ -1,0 +1,124 @@
+:root {
+    --borders: 1px solid #505050;
+}
+
+/* Cursors --------------------------- */
+
+* {cursor: url(https://cur.cursors-4u.net/symbols/sym-1/sym57.cur), auto;}
+
+/* Scrollbars ------------------------ */
+
+* {scrollbar-width: 5px; scrollbar-color: #222 #ededed;}
+
+*::-webkit-scrollbar {width: 10px;}
+*::-webkit-scrollbar-track {background: #ffffff;}
+*::-webkit-scrollbar-thumb {background-color: #222; border-radius: 10px; border: 2px solid #ededed;}
+
+/* Universal ------------------------- */
+
+* {box-sizing: border-box;}
+
+p {margin-block: 5px;}
+
+a {color: #ffffff;}
+a:hover {background: #ffffff; color: #222222;}
+a:active {background: none; color: #ffffff; border: var(--borders); border-radius: 2px;}
+
+nav a {color: #222222;}
+nav a:hover {background: #222222; color: #ffffff;}
+nav a:active {background: none; color: #222222; border: var(--borders); border-radius: 2px;}
+
+h2 {font-size: 10pt; color: #222222; background: #dfdfdf; padding: 0 5px; margin: 0;}
+
+h3 {font-size: 10pt; text-decoration: underline; margin-bottom: 0;}
+
+img {border: 1px solid #505050; border-radius: 2px;}
+
+blockquote {border: var(--borders); border-radius: 2px; padding: 5px; margin: 10px;}
+
+table {border: var(--borders); border-radius: 2px; margin: 10px; border-collapse: collapse;}
+table td {border: var(--borders); padding: 5px; height: 100%; vertical-align: top;}
+
+body {width: 600px; font-family: MS Gothic; font-size: 10pt; overflow-y: scroll; margin: 0 auto;}
+
+.page {max-height: 450px;}
+
+.containers {background: #dfdfdf; border: var(--borders); padding: 2px;}
+
+.box {background: #222222; color: #ffffff; border: 1px solid #505050; border-radius: 2px; padding: 5px;}
+.box a {color: #ffffff;}
+
+.center {text-align: center;}
+
+.external-links {list-style: "↗ ";}
+
+header h1 {font-family:'Times New Roman', Times, serif; font-size: 32pt; color: #ffffff; text-shadow: 2px 2px 0 #222, -2px 2px 0 #222, -2px -2px 0 #222, 2px -2px 0 #222; margin: 10px; text-decoration: underline; display: inline-block;}
+header h1:hover {transform:rotate(-5deg)}
+
+nav, footer {font-size: 9pt; display: flex; height: 20px;}
+
+.nav-links {display: flex; justify-content: space-around; list-style-type: none; width: 230px; padding-inline: 0; margin-block: 0; margin-left: 3px;}
+.nav-links a {text-decoration: none; margin-right: 5px;}
+
+@keyframes marquee {
+    from{transform: translateX(70vw);}
+    to{transform: translateX(-50vw);}
+}
+
+nav .marquee {display: flex; position: relative; overflow-x: hidden; width: 100%; border: var(--borders); border-radius: 2px; background: #ffffff; padding: 5px 0 0 0; height: 20px;}
+nav .marquee .slide {white-space: nowrap; will-change: transform; animation: marquee 25s linear infinite; display: flex;}
+
+.nav-buttons {list-style: none; margin: 0; display: flex; justify-content: flex-end; padding-inline: 0;}
+.nav-buttons a {margin-left: 2px;}
+.nav-buttons img {height: 20px; border: none;}
+
+main [id] {display: none;}
+main [id]:target {display: block;}
+
+footer {justify-content: space-between;}
+footer p {margin-block: 0;}
+
+#mobile-only {display: none;}
+
+/* Home Page ------------------------- */
+
+.page-home {background: #222222;}
+
+.page-home header {background: url('/images/header_1.jpg');}
+
+.home-box [id] {display: block;}
+.home-box {display: flex;}
+.home-box td:first-child {width: 180px;}
+.home-box .link-me {text-align: center; margin: 10px;}
+.home-box section:nth-child(2) {width: 200px; margin-left: 5px;}
+.home-box section:nth-child(2) img {width: 200px;}
+
+@keyframes marquee2 {
+    from{transform: translateX(0);}
+    to{transform: translateX(-85%) ;}
+}
+
+.home-box #hitcount {text-align: center;}
+
+.home-box .marquee {display: flex; position: relative; overflow-x: hidden; max-width: 100%; border: var(--borders); border-radius: 2px;}
+.home-box .marquee .slide {white-space: nowrap; will-change: transform; animation: marquee2 25s linear infinite alternate; display: flex;}
+.home-box .marquee .slide img {width: 50px;}
+
+.projects-box {display: flex; justify-content: center;}
+
+.about-box {display: flex;}
+.about-box section:nth-child(2) {margin-left: 5px;}
+
+.sitemap-box {columns: 2;}
+
+.sitemap-box2 img {border: none;}
+
+/* Mobile Site ----------------------- */
+
+@media only screen and (max-width: 480px) {
+
+    header, nav, main, footer {display: none;}
+
+    #mobile-only {display: block; color: #ffffff; margin: 10px; max-width: 90vw;}
+
+}
