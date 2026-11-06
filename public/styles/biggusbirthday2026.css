@@ -220,7 +220,7 @@ p {font-weight: 400;}
 
 /* Scrapbook Page */
 
-.scrapbook-page {background: url('../images/photos/2026-02-18-06.jpg') fixed no-repeat right top;}
+.scrapbook-page {background: url('../images/photos/2026-02-18-06.jpg') fixed no-repeat right top; background-size: auto 100vh;}
 .scrapbook-page p {font-weight: 400; line-height: 1rem;}
 
 .scrapbook-page header {margin-bottom: 1rem;}
@@ -335,7 +335,7 @@ p {font-weight: 400;}
 
 /* QUIZ PAGE */
 
-.quiz-page {background: url('../images/photos/2026-01-05.jpg') fixed;}
+.quiz-page {background: url('../images/photos/2026-01-05.jpg') fixed no-repeat right top; background-size: auto 100vh;}
 
 .quiz-page header {margin-bottom: 1rem;}
 
