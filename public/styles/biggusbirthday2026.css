@@ -370,3 +370,25 @@ p {font-weight: 400;}
 }
 
 .quiz-page #result_div {border: var(--border-solid); margin-top: 1rem; padding: 1rem;}
+
+/* -------------------------------------------------- */
+
+
+
+
+
+/* -------------------------------------------------- */
+
+/* HELP PAGE */
+
+.help-page {background: url('../images/photos/2025-11-09.jpg') fixed no-repeat right top; background-size: auto 100vh;}
+
+.help-page main section {margin: 1rem 0;}
+.help-page main ul {font-weight: initial; list-style-position: inside;}
+.help-page main p {margin: .5rem 0;}
+
+.help-page #photocard-location table {border: var(--border-solid); border-collapse: collapse;}
+.help-page #photocard-location table tr {border-bottom: var(--border-solid);}
+.help-page #photocard-location table th, .help-page #photocard-location table td {border-right: var(--border-solid); padding: .25rem; text-align: left;}
+.help-page #photocard-location table td span {background: var(--fiv);}
+.help-page #photocard-location table td span:hover {color: var(--one);}
